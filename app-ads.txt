@@ -1,0 +1,1 @@
+# AdMob の pub-ID が決まったら、ここに google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0 を書く

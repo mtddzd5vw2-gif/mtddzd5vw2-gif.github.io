@@ -23,12 +23,25 @@ h3{font-size:15px;margin:22px 0 4px}
 .feat b{display:block;font:400 19px "Yuji Syuku",serif;color:#fff;margin-bottom:4px}
 .doc table{width:100%;border-collapse:collapse;font-size:14px}.doc th,.doc td{padding:8px;border-bottom:1px solid var(--edge);text-align:left;vertical-align:top}.doc th{color:var(--dim);white-space:nowrap}
 .doc{overflow-wrap:anywhere}.doc .tbl{overflow-x:auto}
+.pk-intro{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}.pk-intro p{margin:0;flex:1 1 280px;color:#cfd8f0}
+.pk-dl{letter-spacing:.06em;margin-top:0}.pk-alt{margin:6px 0 0;font-size:12.5px}
+.pk-toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin:14px 0 0;padding:0;list-style:none}.pk-toc a{color:var(--dim)}
+.blurb{padding:14px 16px;background:var(--night);border:1px solid var(--edge);border-radius:6px;margin:10px 0}.blurb small{display:block;color:var(--dim);font-size:12px;letter-spacing:.08em}
+.facts{width:100%;border-collapse:collapse;font-size:14px}.facts th,.facts td{padding:8px;border-bottom:1px solid var(--edge);text-align:left;vertical-align:top}.facts th{color:var(--dim);white-space:nowrap;font-weight:500}
+.kv{display:grid;grid-template-columns:1fr;gap:16px}.kv figure,.pk-grid figure{margin:0}.kv img{width:100%;height:auto;border-radius:8px;display:block;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+@media (min-width:620px){.kv{grid-template-columns:1fr 1fr}.kv figure:first-child{grid-column:1/-1}}
+.pk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px 14px}
+.pk-grid img,.pk-grid video{width:100%;height:auto;display:block;border-radius:14px;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.55)}
+figcaption{font-size:12.5px;line-height:1.6;color:var(--dim);margin-top:7px}figcaption b{display:block;color:var(--text);font-weight:700}figcaption a{margin-right:10px;white-space:nowrap}
+.logo-box{display:grid;place-items:center;padding:22px;border-radius:8px;background:repeating-conic-gradient(#171c30 0 25%,#10142a 0 50%) 50%/22px 22px}.logo-box img{width:min(100%,420px);height:auto}
+.pk-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.feat-list{padding-left:1.1em}.feat-list li{margin:4px 0}.feat-list b{color:#fff}
 footer{margin-top:56px;padding-block:24px 40px;border-top:1px solid var(--edge);font-size:12px;color:var(--dim)}footer a{color:var(--dim);margin-right:12px}</style></head><body>
-<div class="wrap"><header><a class="brand" href="./">電獣</a><nav><a href="support.html">サポート</a><a href="privacy.html">プライバシー</a><a href="en/" hreflang="en" lang="en">English</a></nav></header>
+<div class="wrap"><header><a class="brand" href="./">電獣</a><nav><a href="shindan.html">言霊診断</a><a href="support.html">サポート</a><a href="en/" hreflang="en" lang="en">English</a></nav></header>
 <section class="hero"><img class="icon" src="img/icon.png" alt="電獣のアイコン"><div><h1>書いた言葉が、<br>電獣になる。</h1>
 <p class="lead">電線に眠る霊獣「電獣」を喚び、夜の街にあふれる怪異「ノイズ」を祓う、和風3Dサバイバーアクション。好きな言葉を札に書くと、その言葉に宿る電獣が目覚める――だれが書いても、同じ電獣。</p><span class="cta soon">App Store 配信準備中</span></div></section>
 <video class="pv" src="img/preview.mp4" poster="img/01_word.jpg" autoplay muted loop playsinline preload="metadata" aria-label="ゲームの紹介動画"></video>
 <div class="shots"><img src="img/01_word.jpg" alt="" loading="lazy"><img src="img/02_pet.jpg" alt="" loading="lazy"><img src="img/03_shiny.jpg" alt="" loading="lazy"><img src="img/04_battle.jpg" alt="" loading="lazy"><img src="img/05_ur.jpg" alt="" loading="lazy"><img src="img/06_input.jpg" alt="" loading="lazy"><img src="img/07_boss.jpg" alt="" loading="lazy"><img src="img/08_multi.jpg" alt="" loading="lazy"><img src="img/09_ch2.jpg" alt="" loading="lazy"><img src="img/10_hk.jpg" alt="" loading="lazy"></div>
-<h2>言霊召喚</h2><p>自分の名前、推しの名前、今日の晩ごはん。言葉ごとに決まった電獣が現れます。「○○って書いたら稀の五尾が出た」をシェアしよう。</p>
+<h2>言霊召喚</h2><p>自分の名前、推しの名前、今日の晩ごはん。言葉ごとに決まった電獣が現れます。「○○って書いたら稀の五尾が出た」をシェアしよう。</p><p><a href="shindan.html">言霊診断：あなたの言葉に宿る電獣の影をみる →</a></p>
 <h2>遊び方</h2><div class="feat"><div><b>今日の言霊</b>毎日ひとつ、みんなに同じ言葉が出る。今日の言葉からは、どんな電獣が目覚める？</div><div><b>言霊の相性</b>ふたつの言葉（名前でも）に宿る電獣の相性をみる。わかるのは属性と種族の影だけ。</div><div><b>由来と待ち受け</b>電獣それぞれに、生まれと性格を語る「由来」がある。お気に入りは待ち受け画像にもできる。</div><div><b>指一本</b>ドラッグで移動、技は自動。1回3分前後。区ごとに弱点の属性がある。</div><div><b>覚醒</b>強化を選んで技を進化させ、画面を雷で埋めつくす。</div><div><b>なかよしと昇格</b>拠点で電獣をタップすると、なでられる。毎日なでると「なかよし」が上がり、Lv30・♥5で昇格。子どもの姿から凛々しい姿へ育つ。名前もつけられる。</div><div><b>色違い</b>札や言葉ごとに決まった、まれな色の電獣。黒漆、桜、金、藤、月白。</div><div><b>25種×4階級</b>狐・狼・麒麟・龍・鳳 × 5属性。雷は白磁、焔は朱漆、蒼は氷、翠は翡翠、冥は墨。神の狐は九尾に。</div><div><b>妖の群れ</b>ノイズは人魂・鎌鼬・鬼・提灯お化け・鎧武者の姿で押し寄せる。妖は形で見分けられる。</div><div><b>10の区と大禍</b>駅前から雷雲の頂までの第一章と、終電の駅・電波塔・水没区・常世の第二章。区ごとの仕掛けと、姿も攻撃もちがう大禍が待つ。</div><div><b>百鬼夜行</b>毎週かわる区と異変で、大禍が次々に現れる夜をどこまで生きのびられるか。全員おなじ条件で記録をくらべる。</div><div><b>深度と異変</b>浄化した区は、深度を上げてさらに強いノイズへ。条件つきの「異変」にも挑める。</div></div>
-<footer><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="fund.html">資金決済法に基づく表示</a><a href="odds.html">提供割合</a><a href="support.html">サポート</a><a href="en/" lang="en">English</a><p>© 2026 サン楽</p></footer></div></body></html>
+<footer><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="fund.html">資金決済法に基づく表示</a><a href="odds.html">提供割合</a><a href="support.html">サポート</a><a href="presskit.html">プレスキット</a><a href="en/" lang="en">English</a><p>© 2026 サン楽</p></footer></div></body></html>

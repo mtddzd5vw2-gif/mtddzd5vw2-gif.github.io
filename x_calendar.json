@@ -1,0 +1,2454 @@
+[
+ {
+  "date": "2026-10-01",
+  "time": "07:30",
+  "type": "daily",
+  "word": "どんぐり",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-01.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-01.html"
+ },
+ {
+  "date": "2026-10-01",
+  "time": "12:15",
+  "type": "matsuri",
+  "month": "2026-10",
+  "name": "化け祭り",
+  "ch": "化",
+  "line": "十月の終わり、妖も人も化けて歩く百鬼の祭り。",
+  "image": "https://mtddzd5vw2-gif.github.io/img/f/2026-10.jpg"
+ },
+ {
+  "date": "2026-10-02",
+  "time": "07:30",
+  "type": "daily",
+  "word": "スマホ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-02.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-02.html"
+ },
+ {
+  "date": "2026-10-03",
+  "time": "07:30",
+  "type": "daily",
+  "word": "きのこ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-03.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-03.html"
+ },
+ {
+  "date": "2026-10-04",
+  "time": "07:30",
+  "type": "daily",
+  "word": "アイス",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-04.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-04.html"
+ },
+ {
+  "date": "2026-10-05",
+  "time": "07:30",
+  "type": "daily",
+  "word": "柿",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-05.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-05.html"
+ },
+ {
+  "date": "2026-10-05",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-10-05",
+  "range": "10/5〜10/11",
+  "ku": "七ノ区",
+  "place": "終電の駅",
+  "boss": "大百足",
+  "next": "雷神",
+  "mods": [
+   [
+    "禍つ夜",
+    "ノイズの体力が1.3倍"
+   ],
+   [
+    "追い風",
+    "移動が1.2倍速い"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-10-05.jpg"
+ },
+ {
+  "date": "2026-10-06",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ドラゴン",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-06.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-06.html"
+ },
+ {
+  "date": "2026-10-07",
+  "time": "07:30",
+  "type": "daily",
+  "word": "栗ごはん",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-07.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-07.html"
+ },
+ {
+  "date": "2026-10-08",
+  "time": "07:30",
+  "type": "daily",
+  "word": "目覚まし",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-08.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-08.html"
+ },
+ {
+  "date": "2026-10-09",
+  "time": "07:30",
+  "type": "daily",
+  "word": "十三夜",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-09.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-09.html"
+ },
+ {
+  "date": "2026-10-10",
+  "time": "07:30",
+  "type": "daily",
+  "word": "からす",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-10.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-10.html"
+ },
+ {
+  "date": "2026-10-11",
+  "time": "07:30",
+  "type": "daily",
+  "word": "かぼちゃ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-11.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-11.html"
+ },
+ {
+  "date": "2026-10-12",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ぎょうざ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-12.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-12.html"
+ },
+ {
+  "date": "2026-10-12",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-10-12",
+  "range": "10/12〜10/18",
+  "ku": "十ノ区",
+  "place": "常世",
+  "boss": "大禍津日神",
+  "next": "提灯大入道",
+  "mods": [
+   [
+    "かまいたちの夜",
+    "鎌鼬が多く、速い"
+   ],
+   [
+    "霊子の雨",
+    "霊格の経験が1.4倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-10-12.jpg"
+ },
+ {
+  "date": "2026-10-13",
+  "time": "07:30",
+  "type": "daily",
+  "word": "おばけ",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-13.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-13.html"
+ },
+ {
+  "date": "2026-10-14",
+  "time": "07:30",
+  "type": "daily",
+  "word": "鳥居",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-14.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-14.html"
+ },
+ {
+  "date": "2026-10-15",
+  "time": "07:30",
+  "type": "daily",
+  "word": "運動会",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-15.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-15.html"
+ },
+ {
+  "date": "2026-10-16",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ひみつ",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-16.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-16.html"
+ },
+ {
+  "date": "2026-10-17",
+  "time": "07:30",
+  "type": "daily",
+  "word": "焼きいも",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-17.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-17.html"
+ },
+ {
+  "date": "2026-10-18",
+  "time": "07:30",
+  "type": "daily",
+  "word": "宇宙",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-18.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-18.html"
+ },
+ {
+  "date": "2026-10-19",
+  "time": "07:30",
+  "type": "daily",
+  "word": "紅葉",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-19.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-19.html"
+ },
+ {
+  "date": "2026-10-19",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-10-19",
+  "range": "10/19〜10/25",
+  "ku": "七ノ区",
+  "place": "終電の駅",
+  "boss": "大百足",
+  "next": "停電鬼",
+  "mods": [
+   [
+    "武者ぞろい",
+    "精鋭が40秒ごとに来る"
+   ],
+   [
+    "癒しの灯",
+    "回復がよく落ちる"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-10-19.jpg"
+ },
+ {
+  "date": "2026-10-20",
+  "time": "07:30",
+  "type": "daily",
+  "word": "イヤホン",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-20.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-20.html"
+ },
+ {
+  "date": "2026-10-21",
+  "time": "07:30",
+  "type": "daily",
+  "word": "コスモス",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-21.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-21.html"
+ },
+ {
+  "date": "2026-10-22",
+  "time": "07:30",
+  "type": "daily",
+  "word": "月曜日",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-22.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-22.html"
+ },
+ {
+  "date": "2026-10-23",
+  "time": "07:30",
+  "type": "daily",
+  "word": "金木犀",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-23.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-23.html"
+ },
+ {
+  "date": "2026-10-24",
+  "time": "07:30",
+  "type": "daily",
+  "word": "海",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-24.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-24.html"
+ },
+ {
+  "date": "2026-10-25",
+  "time": "07:30",
+  "type": "daily",
+  "word": "読書の秋",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-25.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-25.html"
+ },
+ {
+  "date": "2026-10-26",
+  "time": "07:30",
+  "type": "daily",
+  "word": "勇気",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-26.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-26.html"
+ },
+ {
+  "date": "2026-10-26",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-10-26",
+  "range": "10/26〜11/1",
+  "ku": "五ノ区",
+  "place": "鉄塔の丘",
+  "boss": "送電大蛇",
+  "next": "大百足",
+  "mods": [
+   [
+    "禍つ夜",
+    "ノイズの体力が1.3倍"
+   ],
+   [
+    "封印のゆるみ",
+    "封印解放が1.5倍たまりやすい"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-10-26.jpg"
+ },
+ {
+  "date": "2026-10-27",
+  "time": "07:30",
+  "type": "daily",
+  "word": "新米",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-27.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-27.html"
+ },
+ {
+  "date": "2026-10-28",
+  "time": "07:30",
+  "type": "daily",
+  "word": "すずめ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-28.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-28.html"
+ },
+ {
+  "date": "2026-10-29",
+  "time": "07:30",
+  "type": "daily",
+  "word": "自転車",
+  "rar": "N",
+  "shiny": true,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-29.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-29.html"
+ },
+ {
+  "date": "2026-10-30",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たまご焼き",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-30.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-30.html"
+ },
+ {
+  "date": "2026-10-31",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ハロウィン",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-10-31.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-10-31.html"
+ },
+ {
+  "date": "2026-11-01",
+  "time": "07:30",
+  "type": "daily",
+  "word": "鍋",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-01.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-01.html"
+ },
+ {
+  "date": "2026-11-01",
+  "time": "12:15",
+  "type": "matsuri",
+  "month": "2026-11",
+  "name": "紅葉狩り",
+  "ch": "紅",
+  "line": "色づいた山から、紅葉が街まで降りてくる。",
+  "image": "https://mtddzd5vw2-gif.github.io/img/f/2026-11.jpg"
+ },
+ {
+  "date": "2026-11-02",
+  "time": "07:30",
+  "type": "daily",
+  "word": "希望",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-02.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-02.html"
+ },
+ {
+  "date": "2026-11-02",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-11-02",
+  "range": "11/2〜11/8",
+  "ku": "三ノ区",
+  "place": "湾岸変電所",
+  "boss": "無明王",
+  "next": "雷神",
+  "mods": [
+   [
+    "鬼の行列",
+    "鬼が2倍あらわれる"
+   ],
+   [
+    "癒しの灯",
+    "回復がよく落ちる"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-11-02.jpg"
+ },
+ {
+  "date": "2026-11-03",
+  "time": "07:30",
+  "type": "daily",
+  "word": "紅葉狩り",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-03.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-03.html"
+ },
+ {
+  "date": "2026-11-04",
+  "time": "07:30",
+  "type": "daily",
+  "word": "川",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-04.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-04.html"
+ },
+ {
+  "date": "2026-11-05",
+  "time": "07:30",
+  "type": "daily",
+  "word": "酉の市",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-05.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-05.html"
+ },
+ {
+  "date": "2026-11-06",
+  "time": "07:30",
+  "type": "daily",
+  "word": "毛布",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-06.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-06.html"
+ },
+ {
+  "date": "2026-11-07",
+  "time": "07:30",
+  "type": "daily",
+  "word": "千歳あめ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-07.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-07.html"
+ },
+ {
+  "date": "2026-11-08",
+  "time": "07:30",
+  "type": "daily",
+  "word": "カレー",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-08.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-08.html"
+ },
+ {
+  "date": "2026-11-09",
+  "time": "07:30",
+  "type": "daily",
+  "word": "湯たんぽ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-09.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-09.html"
+ },
+ {
+  "date": "2026-11-09",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-11-09",
+  "range": "11/9〜11/15",
+  "ku": "四ノ区",
+  "place": "稲荷坂",
+  "boss": "提灯大入道",
+  "next": "雷神",
+  "mods": [
+   [
+    "禍つ夜",
+    "ノイズの体力が1.3倍"
+   ],
+   [
+    "共鳴日和",
+    "共鳴する範囲が1.5倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-11-09.jpg"
+ },
+ {
+  "date": "2026-11-10",
+  "time": "07:30",
+  "type": "daily",
+  "word": "放課後",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-10.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-10.html"
+ },
+ {
+  "date": "2026-11-11",
+  "time": "07:30",
+  "type": "daily",
+  "word": "毛糸",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-11.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-11.html"
+ },
+ {
+  "date": "2026-11-12",
+  "time": "07:30",
+  "type": "daily",
+  "word": "給料日",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-12.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-12.html"
+ },
+ {
+  "date": "2026-11-13",
+  "time": "07:30",
+  "type": "daily",
+  "word": "銀杏",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-13.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-13.html"
+ },
+ {
+  "date": "2026-11-14",
+  "time": "07:30",
+  "type": "daily",
+  "word": "えんぴつ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-14.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-14.html"
+ },
+ {
+  "date": "2026-11-15",
+  "time": "07:30",
+  "type": "daily",
+  "word": "七五三",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-15.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-15.html"
+ },
+ {
+  "date": "2026-11-16",
+  "time": "07:30",
+  "type": "daily",
+  "word": "自転車",
+  "rar": "N",
+  "shiny": true,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-16.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-16.html"
+ },
+ {
+  "date": "2026-11-16",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-11-16",
+  "range": "11/16〜11/22",
+  "ku": "九ノ区",
+  "place": "水没区",
+  "boss": "海坊主",
+  "next": "無明王",
+  "mods": [
+   [
+    "鬼の行列",
+    "鬼が2倍あらわれる"
+   ],
+   [
+    "癒しの灯",
+    "回復がよく落ちる"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-11-16.jpg"
+ },
+ {
+  "date": "2026-11-17",
+  "time": "07:30",
+  "type": "daily",
+  "word": "焚き火",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-17.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-17.html"
+ },
+ {
+  "date": "2026-11-18",
+  "time": "07:30",
+  "type": "daily",
+  "word": "金曜日",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-18.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-18.html"
+ },
+ {
+  "date": "2026-11-19",
+  "time": "07:30",
+  "type": "daily",
+  "word": "木枯らし",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-19.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-19.html"
+ },
+ {
+  "date": "2026-11-20",
+  "time": "07:30",
+  "type": "daily",
+  "word": "すずめ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-20.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-20.html"
+ },
+ {
+  "date": "2026-11-21",
+  "time": "07:30",
+  "type": "daily",
+  "word": "落ち葉",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-21.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-21.html"
+ },
+ {
+  "date": "2026-11-22",
+  "time": "07:30",
+  "type": "daily",
+  "word": "オムライス",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-22.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-22.html"
+ },
+ {
+  "date": "2026-11-23",
+  "time": "07:30",
+  "type": "daily",
+  "word": "みかん",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-23.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-23.html"
+ },
+ {
+  "date": "2026-11-23",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-11-23",
+  "range": "11/23〜11/29",
+  "ku": "六ノ区",
+  "place": "雷雲の頂",
+  "boss": "雷神",
+  "next": "大天狗",
+  "mods": [
+   [
+    "かまいたちの夜",
+    "鎌鼬が多く、速い"
+   ],
+   [
+    "霊子の雨",
+    "霊格の経験が1.4倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-11-23.jpg"
+ },
+ {
+  "date": "2026-11-24",
+  "time": "07:30",
+  "type": "daily",
+  "word": "キャンプ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-24.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-24.html"
+ },
+ {
+  "date": "2026-11-25",
+  "time": "07:30",
+  "type": "daily",
+  "word": "電柱",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-25.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-25.html"
+ },
+ {
+  "date": "2026-11-26",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ねこ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-26.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-26.html"
+ },
+ {
+  "date": "2026-11-27",
+  "time": "07:30",
+  "type": "daily",
+  "word": "からす",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-27.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-27.html"
+ },
+ {
+  "date": "2026-11-28",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たこ焼き",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-28.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-28.html"
+ },
+ {
+  "date": "2026-11-29",
+  "time": "07:30",
+  "type": "daily",
+  "word": "森",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-29.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-29.html"
+ },
+ {
+  "date": "2026-11-30",
+  "time": "07:30",
+  "type": "daily",
+  "word": "魔法",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-11-30.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-11-30.html"
+ },
+ {
+  "date": "2026-11-30",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-11-30",
+  "range": "11/30〜12/6",
+  "ku": "五ノ区",
+  "place": "鉄塔の丘",
+  "boss": "送電大蛇",
+  "next": "雷神",
+  "mods": [
+   [
+    "武者ぞろい",
+    "精鋭が40秒ごとに来る"
+   ],
+   [
+    "封印のゆるみ",
+    "封印解放が1.5倍たまりやすい"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-11-30.jpg"
+ },
+ {
+  "date": "2026-12-01",
+  "time": "07:30",
+  "type": "daily",
+  "word": "冬至",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-01.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-01.html"
+ },
+ {
+  "date": "2026-12-01",
+  "time": "12:15",
+  "type": "matsuri",
+  "month": "2026-12",
+  "name": "年越し",
+  "ch": "鐘",
+  "line": "除夜の鐘が百八つ。電線の雪を払って、新しい年へ。",
+  "image": "https://mtddzd5vw2-gif.github.io/img/f/2026-12.jpg"
+ },
+ {
+  "date": "2026-12-02",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ペンギン",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-02.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-02.html"
+ },
+ {
+  "date": "2026-12-03",
+  "time": "07:30",
+  "type": "daily",
+  "word": "除夜の鐘",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-03.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-03.html"
+ },
+ {
+  "date": "2026-12-04",
+  "time": "07:30",
+  "type": "daily",
+  "word": "目覚まし",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-04.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-04.html"
+ },
+ {
+  "date": "2026-12-05",
+  "time": "07:30",
+  "type": "daily",
+  "word": "雪だるま",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-05.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-05.html"
+ },
+ {
+  "date": "2026-12-06",
+  "time": "07:30",
+  "type": "daily",
+  "word": "誕生日",
+  "rar": "N",
+  "shiny": true,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-06.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-06.html"
+ },
+ {
+  "date": "2026-12-07",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ケーキ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-07.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-07.html"
+ },
+ {
+  "date": "2026-12-07",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-12-07",
+  "range": "12/7〜12/13",
+  "ku": "三ノ区",
+  "place": "湾岸変電所",
+  "boss": "無明王",
+  "next": "停電鬼",
+  "mods": [
+   [
+    "鬼の行列",
+    "鬼が2倍あらわれる"
+   ],
+   [
+    "封印のゆるみ",
+    "封印解放が1.5倍たまりやすい"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-12-07.jpg"
+ },
+ {
+  "date": "2026-12-08",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たまご焼き",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-08.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-08.html"
+ },
+ {
+  "date": "2026-12-09",
+  "time": "07:30",
+  "type": "daily",
+  "word": "こたつ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-09.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-09.html"
+ },
+ {
+  "date": "2026-12-10",
+  "time": "07:30",
+  "type": "daily",
+  "word": "家族",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-10.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-10.html"
+ },
+ {
+  "date": "2026-12-11",
+  "time": "07:30",
+  "type": "daily",
+  "word": "イルミネーション",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-11.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-11.html"
+ },
+ {
+  "date": "2026-12-12",
+  "time": "07:30",
+  "type": "daily",
+  "word": "旅行",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-12.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-12.html"
+ },
+ {
+  "date": "2026-12-13",
+  "time": "07:30",
+  "type": "daily",
+  "word": "大そうじ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-13.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-13.html"
+ },
+ {
+  "date": "2026-12-14",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ピザ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-14.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-14.html"
+ },
+ {
+  "date": "2026-12-14",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-12-14",
+  "range": "12/14〜12/20",
+  "ku": "九ノ区",
+  "place": "水没区",
+  "boss": "海坊主",
+  "next": "停電鬼",
+  "mods": [
+   [
+    "提灯行列",
+    "提灯お化けが2倍"
+   ],
+   [
+    "癒しの灯",
+    "回復がよく落ちる"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-12-14.jpg"
+ },
+ {
+  "date": "2026-12-15",
+  "time": "07:30",
+  "type": "daily",
+  "word": "マフラー",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-15.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-15.html"
+ },
+ {
+  "date": "2026-12-16",
+  "time": "07:30",
+  "type": "daily",
+  "word": "オムライス",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-16.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-16.html"
+ },
+ {
+  "date": "2026-12-17",
+  "time": "07:30",
+  "type": "daily",
+  "word": "トナカイ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-17.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-17.html"
+ },
+ {
+  "date": "2026-12-18",
+  "time": "07:30",
+  "type": "daily",
+  "word": "虹",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-18.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-18.html"
+ },
+ {
+  "date": "2026-12-19",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ゆず湯",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-19.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-19.html"
+ },
+ {
+  "date": "2026-12-20",
+  "time": "07:30",
+  "type": "daily",
+  "word": "きつね",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-20.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-20.html"
+ },
+ {
+  "date": "2026-12-21",
+  "time": "07:30",
+  "type": "daily",
+  "word": "早起き",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-21.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-21.html"
+ },
+ {
+  "date": "2026-12-21",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-12-21",
+  "range": "12/21〜12/27",
+  "ku": "六ノ区",
+  "place": "雷雲の頂",
+  "boss": "雷神",
+  "next": "大禍津日神",
+  "mods": [
+   [
+    "百鬼の宴",
+    "ノイズが1.4倍の数で押し寄せる"
+   ],
+   [
+    "電獣の加護",
+    "最大HPが1.3倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-12-21.jpg"
+ },
+ {
+  "date": "2026-12-22",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ねこ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-22.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-22.html"
+ },
+ {
+  "date": "2026-12-23",
+  "time": "07:30",
+  "type": "daily",
+  "word": "宝物",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-23.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-23.html"
+ },
+ {
+  "date": "2026-12-24",
+  "time": "07:30",
+  "type": "daily",
+  "word": "クリスマス",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-24.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-24.html"
+ },
+ {
+  "date": "2026-12-25",
+  "time": "07:30",
+  "type": "daily",
+  "word": "サンタ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-25.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-25.html"
+ },
+ {
+  "date": "2026-12-26",
+  "time": "07:30",
+  "type": "daily",
+  "word": "おやすみ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-26.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-26.html"
+ },
+ {
+  "date": "2026-12-27",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ハンバーグ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-27.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-27.html"
+ },
+ {
+  "date": "2026-12-28",
+  "time": "07:30",
+  "type": "daily",
+  "word": "お守り",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-28.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-28.html"
+ },
+ {
+  "date": "2026-12-28",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2026-12-28",
+  "range": "12/28〜1/3",
+  "ku": "二ノ区",
+  "place": "高架下",
+  "boss": "逆雷",
+  "next": "停電鬼",
+  "mods": [
+   [
+    "かまいたちの夜",
+    "鎌鼬が多く、速い"
+   ],
+   [
+    "封印のゆるみ",
+    "封印解放が1.5倍たまりやすい"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2026-12-28.jpg"
+ },
+ {
+  "date": "2026-12-29",
+  "time": "07:30",
+  "type": "daily",
+  "word": "スマホ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-29.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-29.html"
+ },
+ {
+  "date": "2026-12-30",
+  "time": "07:30",
+  "type": "daily",
+  "word": "勇気",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-30.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-30.html"
+ },
+ {
+  "date": "2026-12-31",
+  "time": "07:30",
+  "type": "daily",
+  "word": "年越しそば",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2026-12-31.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2026-12-31.html"
+ },
+ {
+  "date": "2027-01-01",
+  "time": "07:30",
+  "type": "daily",
+  "word": "お正月",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-01.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-01.html"
+ },
+ {
+  "date": "2027-01-01",
+  "time": "12:15",
+  "type": "matsuri",
+  "month": "2027-01",
+  "name": "初詣",
+  "ch": "詣",
+  "line": "新しい年の電線に、最初の灯をともす。",
+  "image": "https://mtddzd5vw2-gif.github.io/img/f/2027-01.jpg"
+ },
+ {
+  "date": "2027-01-02",
+  "time": "07:30",
+  "type": "daily",
+  "word": "忍者",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-02.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-02.html"
+ },
+ {
+  "date": "2027-01-03",
+  "time": "07:30",
+  "type": "daily",
+  "word": "雪うさぎ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-03.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-03.html"
+ },
+ {
+  "date": "2027-01-04",
+  "time": "07:30",
+  "type": "daily",
+  "word": "電柱",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-04.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-04.html"
+ },
+ {
+  "date": "2027-01-04",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-01-04",
+  "range": "1/4〜1/10",
+  "ku": "一ノ区",
+  "place": "駅前アーケード",
+  "boss": "停電鬼",
+  "next": "無明王",
+  "mods": [
+   [
+    "かまいたちの夜",
+    "鎌鼬が多く、速い"
+   ],
+   [
+    "共鳴日和",
+    "共鳴する範囲が1.5倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-01-04.jpg"
+ },
+ {
+  "date": "2027-01-05",
+  "time": "07:30",
+  "type": "daily",
+  "word": "お年玉",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-05.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-05.html"
+ },
+ {
+  "date": "2027-01-06",
+  "time": "07:30",
+  "type": "daily",
+  "word": "うさぎ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-06.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-06.html"
+ },
+ {
+  "date": "2027-01-07",
+  "time": "07:30",
+  "type": "daily",
+  "word": "書き初め",
+  "rar": "N",
+  "shiny": true,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-07.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-07.html"
+ },
+ {
+  "date": "2027-01-08",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ハンバーグ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-08.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-08.html"
+ },
+ {
+  "date": "2027-01-09",
+  "time": "07:30",
+  "type": "daily",
+  "word": "初夢",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-09.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-09.html"
+ },
+ {
+  "date": "2027-01-10",
+  "time": "07:30",
+  "type": "daily",
+  "word": "スマホ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-10.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-10.html"
+ },
+ {
+  "date": "2027-01-11",
+  "time": "07:30",
+  "type": "daily",
+  "word": "おせち",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-11.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-11.html"
+ },
+ {
+  "date": "2027-01-11",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-01-11",
+  "range": "1/11〜1/17",
+  "ku": "五ノ区",
+  "place": "鉄塔の丘",
+  "boss": "送電大蛇",
+  "next": "大天狗",
+  "mods": [
+   [
+    "百鬼の宴",
+    "ノイズが1.4倍の数で押し寄せる"
+   ],
+   [
+    "封印のゆるみ",
+    "封印解放が1.5倍たまりやすい"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-01-11.jpg"
+ },
+ {
+  "date": "2027-01-12",
+  "time": "07:30",
+  "type": "daily",
+  "word": "森",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-12.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-12.html"
+ },
+ {
+  "date": "2027-01-13",
+  "time": "07:30",
+  "type": "daily",
+  "word": "獅子舞",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-13.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-13.html"
+ },
+ {
+  "date": "2027-01-14",
+  "time": "07:30",
+  "type": "daily",
+  "word": "毛布",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-14.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-14.html"
+ },
+ {
+  "date": "2027-01-15",
+  "time": "07:30",
+  "type": "daily",
+  "word": "七草がゆ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-15.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-15.html"
+ },
+ {
+  "date": "2027-01-16",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ピザ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-16.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-16.html"
+ },
+ {
+  "date": "2027-01-17",
+  "time": "07:30",
+  "type": "daily",
+  "word": "福袋",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-17.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-17.html"
+ },
+ {
+  "date": "2027-01-18",
+  "time": "07:30",
+  "type": "daily",
+  "word": "旅行",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-18.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-18.html"
+ },
+ {
+  "date": "2027-01-18",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-01-18",
+  "range": "1/18〜1/24",
+  "ku": "五ノ区",
+  "place": "鉄塔の丘",
+  "boss": "送電大蛇",
+  "next": "大百足",
+  "mods": [
+   [
+    "百鬼の宴",
+    "ノイズが1.4倍の数で押し寄せる"
+   ],
+   [
+    "電獣の加護",
+    "最大HPが1.3倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-01-18.jpg"
+ },
+ {
+  "date": "2027-01-19",
+  "time": "07:30",
+  "type": "daily",
+  "word": "みかん",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-19.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-19.html"
+ },
+ {
+  "date": "2027-01-20",
+  "time": "07:30",
+  "type": "daily",
+  "word": "雷",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-20.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-20.html"
+ },
+ {
+  "date": "2027-01-21",
+  "time": "07:30",
+  "type": "daily",
+  "word": "だるま",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-21.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-21.html"
+ },
+ {
+  "date": "2027-01-22",
+  "time": "07:30",
+  "type": "daily",
+  "word": "すずめ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-22.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-22.html"
+ },
+ {
+  "date": "2027-01-23",
+  "time": "07:30",
+  "type": "daily",
+  "word": "こたつ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-23.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-23.html"
+ },
+ {
+  "date": "2027-01-24",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ドラゴン",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-24.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-24.html"
+ },
+ {
+  "date": "2027-01-25",
+  "time": "07:30",
+  "type": "daily",
+  "word": "鏡もち",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-25.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-25.html"
+ },
+ {
+  "date": "2027-01-25",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-01-25",
+  "range": "1/25〜1/31",
+  "ku": "九ノ区",
+  "place": "水没区",
+  "boss": "海坊主",
+  "next": "雷神",
+  "mods": [
+   [
+    "かまいたちの夜",
+    "鎌鼬が多く、速い"
+   ],
+   [
+    "追い風",
+    "移動が1.2倍速い"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-01-25.jpg"
+ },
+ {
+  "date": "2027-01-26",
+  "time": "07:30",
+  "type": "daily",
+  "word": "キャンプ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-26.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-26.html"
+ },
+ {
+  "date": "2027-01-27",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たこあげ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-27.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-27.html"
+ },
+ {
+  "date": "2027-01-28",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たこ焼き",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-28.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-28.html"
+ },
+ {
+  "date": "2027-01-29",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ねこ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-29.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-29.html"
+ },
+ {
+  "date": "2027-01-30",
+  "time": "07:30",
+  "type": "daily",
+  "word": "夢",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-30.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-30.html"
+ },
+ {
+  "date": "2027-01-31",
+  "time": "07:30",
+  "type": "daily",
+  "word": "宝物",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-01-31.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-01-31.html"
+ },
+ {
+  "date": "2027-02-01",
+  "time": "07:30",
+  "type": "daily",
+  "word": "梅の花",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-01.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-01.html"
+ },
+ {
+  "date": "2027-02-01",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-02-01",
+  "range": "2/1〜2/7",
+  "ku": "五ノ区",
+  "place": "鉄塔の丘",
+  "boss": "送電大蛇",
+  "next": "大天狗",
+  "mods": [
+   [
+    "百鬼の宴",
+    "ノイズが1.4倍の数で押し寄せる"
+   ],
+   [
+    "追い風",
+    "移動が1.2倍速い"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-02-01.jpg"
+ },
+ {
+  "date": "2027-02-01",
+  "time": "12:15",
+  "type": "matsuri",
+  "month": "2027-02",
+  "name": "節分",
+  "ch": "鬼",
+  "line": "鬼は外、福は内。梅の咲く街で、鬼のノイズを追いはらう。",
+  "image": "https://mtddzd5vw2-gif.github.io/img/f/2027-02.jpg"
+ },
+ {
+  "date": "2027-02-02",
+  "time": "07:30",
+  "type": "daily",
+  "word": "きつね",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-02.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-02.html"
+ },
+ {
+  "date": "2027-02-03",
+  "time": "07:30",
+  "type": "daily",
+  "word": "節分",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-03.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-03.html"
+ },
+ {
+  "date": "2027-02-04",
+  "time": "07:30",
+  "type": "daily",
+  "word": "うさぎ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-04.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-04.html"
+ },
+ {
+  "date": "2027-02-05",
+  "time": "07:30",
+  "type": "daily",
+  "word": "手ぶくろ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-05.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-05.html"
+ },
+ {
+  "date": "2027-02-06",
+  "time": "07:30",
+  "type": "daily",
+  "word": "音楽",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-06.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-06.html"
+ },
+ {
+  "date": "2027-02-07",
+  "time": "07:30",
+  "type": "daily",
+  "word": "豆まき",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-07.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-07.html"
+ },
+ {
+  "date": "2027-02-08",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ドラゴン",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-08.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-08.html"
+ },
+ {
+  "date": "2027-02-08",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-02-08",
+  "range": "2/8〜2/14",
+  "ku": "七ノ区",
+  "place": "終電の駅",
+  "boss": "大百足",
+  "next": "提灯大入道",
+  "mods": [
+   [
+    "武者ぞろい",
+    "精鋭が40秒ごとに来る"
+   ],
+   [
+    "電獣の加護",
+    "最大HPが1.3倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-02-08.jpg"
+ },
+ {
+  "date": "2027-02-09",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ふきのとう",
+  "rar": "N",
+  "shiny": true,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-09.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-09.html"
+ },
+ {
+  "date": "2027-02-10",
+  "time": "07:30",
+  "type": "daily",
+  "word": "恐竜",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-10.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-10.html"
+ },
+ {
+  "date": "2027-02-11",
+  "time": "07:30",
+  "type": "daily",
+  "word": "恵方巻",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-11.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-11.html"
+ },
+ {
+  "date": "2027-02-12",
+  "time": "07:30",
+  "type": "daily",
+  "word": "温泉",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-12.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-12.html"
+ },
+ {
+  "date": "2027-02-13",
+  "time": "07:30",
+  "type": "daily",
+  "word": "雪だるま",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-13.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-13.html"
+ },
+ {
+  "date": "2027-02-14",
+  "time": "07:30",
+  "type": "daily",
+  "word": "チョコレート",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-14.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-14.html"
+ },
+ {
+  "date": "2027-02-15",
+  "time": "07:30",
+  "type": "daily",
+  "word": "かまくら",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-15.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-15.html"
+ },
+ {
+  "date": "2027-02-15",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-02-15",
+  "range": "2/15〜2/21",
+  "ku": "十ノ区",
+  "place": "常世",
+  "boss": "大禍津日神",
+  "next": "停電鬼",
+  "mods": [
+   [
+    "鬼の行列",
+    "鬼が2倍あらわれる"
+   ],
+   [
+    "共鳴日和",
+    "共鳴する範囲が1.5倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-02-15.jpg"
+ },
+ {
+  "date": "2027-02-16",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ありがとう",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-16.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-16.html"
+ },
+ {
+  "date": "2027-02-17",
+  "time": "07:30",
+  "type": "daily",
+  "word": "春一番",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-17.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-17.html"
+ },
+ {
+  "date": "2027-02-18",
+  "time": "07:30",
+  "type": "daily",
+  "word": "からあげ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-18.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-18.html"
+ },
+ {
+  "date": "2027-02-19",
+  "time": "07:30",
+  "type": "daily",
+  "word": "キャンプ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-19.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-19.html"
+ },
+ {
+  "date": "2027-02-20",
+  "time": "07:30",
+  "type": "daily",
+  "word": "電柱",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-20.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-20.html"
+ },
+ {
+  "date": "2027-02-21",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ピアノ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-21.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-21.html"
+ },
+ {
+  "date": "2027-02-22",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ねこの日",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-22.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-22.html"
+ },
+ {
+  "date": "2027-02-22",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-02-22",
+  "range": "2/22〜2/28",
+  "ku": "四ノ区",
+  "place": "稲荷坂",
+  "boss": "提灯大入道",
+  "next": "大天狗",
+  "mods": [
+   [
+    "禍つ夜",
+    "ノイズの体力が1.3倍"
+   ],
+   [
+    "霊子の雨",
+    "霊格の経験が1.4倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-02-22.jpg"
+ },
+ {
+  "date": "2027-02-23",
+  "time": "07:30",
+  "type": "daily",
+  "word": "イルカ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-23.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-23.html"
+ },
+ {
+  "date": "2027-02-24",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たこ焼き",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-24.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-24.html"
+ },
+ {
+  "date": "2027-02-25",
+  "time": "07:30",
+  "type": "daily",
+  "word": "神社",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-25.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-25.html"
+ },
+ {
+  "date": "2027-02-26",
+  "time": "07:30",
+  "type": "daily",
+  "word": "自転車",
+  "rar": "N",
+  "shiny": true,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-26.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-26.html"
+ },
+ {
+  "date": "2027-02-27",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ギター",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-27.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-27.html"
+ },
+ {
+  "date": "2027-02-28",
+  "time": "07:30",
+  "type": "daily",
+  "word": "アイス",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-02-28.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-02-28.html"
+ },
+ {
+  "date": "2027-03-01",
+  "time": "07:30",
+  "type": "daily",
+  "word": "つくし",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-01.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-01.html"
+ },
+ {
+  "date": "2027-03-01",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-03-01",
+  "range": "3/1〜3/7",
+  "ku": "三ノ区",
+  "place": "湾岸変電所",
+  "boss": "無明王",
+  "next": "提灯大入道",
+  "mods": [
+   [
+    "かまいたちの夜",
+    "鎌鼬が多く、速い"
+   ],
+   [
+    "共鳴日和",
+    "共鳴する範囲が1.5倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-03-01.jpg"
+ },
+ {
+  "date": "2027-03-01",
+  "time": "12:15",
+  "type": "matsuri",
+  "month": "2027-03",
+  "name": "桃の節句",
+  "ch": "桃",
+  "line": "桃の花の下で、電獣たちの無事を祈る。",
+  "image": "https://mtddzd5vw2-gif.github.io/img/f/2027-03.jpg"
+ },
+ {
+  "date": "2027-03-02",
+  "time": "07:30",
+  "type": "daily",
+  "word": "二度寝",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-02.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-02.html"
+ },
+ {
+  "date": "2027-03-03",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ひなまつり",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-03.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-03.html"
+ },
+ {
+  "date": "2027-03-04",
+  "time": "07:30",
+  "type": "daily",
+  "word": "図書館",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-04.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-04.html"
+ },
+ {
+  "date": "2027-03-05",
+  "time": "07:30",
+  "type": "daily",
+  "word": "いちご",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-05.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-05.html"
+ },
+ {
+  "date": "2027-03-06",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ペンギン",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-06.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-06.html"
+ },
+ {
+  "date": "2027-03-07",
+  "time": "07:30",
+  "type": "daily",
+  "word": "うぐいす",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-07.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-07.html"
+ },
+ {
+  "date": "2027-03-08",
+  "time": "07:30",
+  "type": "daily",
+  "word": "恐竜",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-08.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-08.html"
+ },
+ {
+  "date": "2027-03-08",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-03-08",
+  "range": "3/8〜3/14",
+  "ku": "二ノ区",
+  "place": "高架下",
+  "boss": "逆雷",
+  "next": "提灯大入道",
+  "mods": [
+   [
+    "百鬼の宴",
+    "ノイズが1.4倍の数で押し寄せる"
+   ],
+   [
+    "封印のゆるみ",
+    "封印解放が1.5倍たまりやすい"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-03-08.jpg"
+ },
+ {
+  "date": "2027-03-09",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ぼたもち",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-09.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-09.html"
+ },
+ {
+  "date": "2027-03-10",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ありがとう",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-10.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-10.html"
+ },
+ {
+  "date": "2027-03-11",
+  "time": "07:30",
+  "type": "daily",
+  "word": "菜の花",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-11.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-11.html"
+ },
+ {
+  "date": "2027-03-12",
+  "time": "07:30",
+  "type": "daily",
+  "word": "旅行",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-12.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-12.html"
+ },
+ {
+  "date": "2027-03-13",
+  "time": "07:30",
+  "type": "daily",
+  "word": "たんぽぽ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-13.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-13.html"
+ },
+ {
+  "date": "2027-03-14",
+  "time": "07:30",
+  "type": "daily",
+  "word": "うさぎ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-14.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-14.html"
+ },
+ {
+  "date": "2027-03-15",
+  "time": "07:30",
+  "type": "daily",
+  "word": "新芽",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-15.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-15.html"
+ },
+ {
+  "date": "2027-03-15",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-03-15",
+  "range": "3/15〜3/21",
+  "ku": "十ノ区",
+  "place": "常世",
+  "boss": "大禍津日神",
+  "next": "無明王",
+  "mods": [
+   [
+    "提灯行列",
+    "提灯お化けが2倍"
+   ],
+   [
+    "霊子の雨",
+    "霊格の経験が1.4倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-03-15.jpg"
+ },
+ {
+  "date": "2027-03-16",
+  "time": "07:30",
+  "type": "daily",
+  "word": "月曜日",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-16.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-16.html"
+ },
+ {
+  "date": "2027-03-17",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ちょうちょ",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-17.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-17.html"
+ },
+ {
+  "date": "2027-03-18",
+  "time": "07:30",
+  "type": "daily",
+  "word": "パンケーキ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-18.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-18.html"
+ },
+ {
+  "date": "2027-03-19",
+  "time": "07:30",
+  "type": "daily",
+  "word": "卒業",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-19.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-19.html"
+ },
+ {
+  "date": "2027-03-20",
+  "time": "07:30",
+  "type": "daily",
+  "word": "目覚まし",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-20.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-20.html"
+ },
+ {
+  "date": "2027-03-21",
+  "time": "07:30",
+  "type": "daily",
+  "word": "桜もち",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-21.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-21.html"
+ },
+ {
+  "date": "2027-03-22",
+  "time": "07:30",
+  "type": "daily",
+  "word": "自販機",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-22.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-22.html"
+ },
+ {
+  "date": "2027-03-22",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-03-22",
+  "range": "3/22〜3/28",
+  "ku": "八ノ区",
+  "place": "電波塔",
+  "boss": "大天狗",
+  "next": "停電鬼",
+  "mods": [
+   [
+    "百鬼の宴",
+    "ノイズが1.4倍の数で押し寄せる"
+   ],
+   [
+    "癒しの灯",
+    "回復がよく落ちる"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-03-22.jpg"
+ },
+ {
+  "date": "2027-03-23",
+  "time": "07:30",
+  "type": "daily",
+  "word": "イヤホン",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-23.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-23.html"
+ },
+ {
+  "date": "2027-03-24",
+  "time": "07:30",
+  "type": "daily",
+  "word": "金魚",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-24.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-24.html"
+ },
+ {
+  "date": "2027-03-25",
+  "time": "07:30",
+  "type": "daily",
+  "word": "雨上がり",
+  "rar": "R",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-25.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-25.html"
+ },
+ {
+  "date": "2027-03-26",
+  "time": "07:30",
+  "type": "daily",
+  "word": "からす",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-26.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-26.html"
+ },
+ {
+  "date": "2027-03-27",
+  "time": "07:30",
+  "type": "daily",
+  "word": "散歩",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-27.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-27.html"
+ },
+ {
+  "date": "2027-03-28",
+  "time": "07:30",
+  "type": "daily",
+  "word": "毛布",
+  "rar": "SR",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-28.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-28.html"
+ },
+ {
+  "date": "2027-03-29",
+  "time": "07:30",
+  "type": "daily",
+  "word": "山",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-29.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-29.html"
+ },
+ {
+  "date": "2027-03-29",
+  "time": "08:15",
+  "type": "hyakki",
+  "wk": "2027-03-29",
+  "range": "3/29〜4/4",
+  "ku": "二ノ区",
+  "place": "高架下",
+  "boss": "逆雷",
+  "next": "大天狗",
+  "mods": [
+   [
+    "提灯行列",
+    "提灯お化けが2倍"
+   ],
+   [
+    "霊子の雨",
+    "霊格の経験が1.4倍"
+   ]
+  ],
+  "image": "https://mtddzd5vw2-gif.github.io/img/w/2027-03-29.jpg"
+ },
+ {
+  "date": "2027-03-30",
+  "time": "07:30",
+  "type": "daily",
+  "word": "ぎょうざ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-30.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-30.html"
+ },
+ {
+  "date": "2027-03-31",
+  "time": "07:30",
+  "type": "daily",
+  "word": "えんぴつ",
+  "rar": "N",
+  "shiny": false,
+  "image": "https://mtddzd5vw2-gif.github.io/img/d/2027-03-31.jpg",
+  "page": "https://mtddzd5vw2-gif.github.io/d/2027-03-31.html"
+ }
+]

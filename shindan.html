@@ -68,7 +68,7 @@ footer{margin-top:56px;padding-block:24px 40px;border-top:1px solid var(--edge);
     var text = '「' + w + '」に宿る電獣は、' + E.k + 'の' + K.k + 'の影。あなたの言葉には、なにが眠ってる？ #言霊診断 #電獣';
     out.innerHTML = '<div class="sd-card" style="--c:' + E.col + ';--m:url(img/sil_' + d.kind + '.png)"><div class="sd-word">「' + esc(w) + '」</div><div class="sd-sub">に宿るのは</div><div class="sd-sil" role="img" aria-label="' + E.k + 'の' + K.k + 'の影"></div>'
       + '<p class="sd-line"><b>' + E.k + '</b>（' + E.read + '）の<b>' + K.k + '</b>の影</p><p class="sd-note">姿・位・色違い・名前は、アプリで「' + esc(w) + '」と書いて召喚するまでわからない。</p>'
-      + '<div class="sd-act"><a class="cta sd-x" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://mtddzd5vw2-gif.github.io/shindan.html') + '">X でシェア</a><span class="cta soon">App Store 配信準備中</span></div></div>';
+      + '<div class="sd-act"><a class="cta sd-x" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://mtddzd5vw2-gif.github.io/shindan.html') + '">X でシェア</a><a class="cta" href="https://apps.apple.com/jp/app/id6816935558">アプリで召喚する</a></div></div>';
     out.hidden = false; inp.value = w;
     if (push !== false) try { history.replaceState(null, '', '?w=' + encodeURIComponent(w)); } catch (e) {}
   }

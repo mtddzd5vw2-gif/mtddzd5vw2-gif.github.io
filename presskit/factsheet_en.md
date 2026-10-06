@@ -22,13 +22,13 @@ Battles take one finger: drag to move while your skills fire on their own. Pick 
 | Genre | Kanji-summon, Japanese-folklore 3D survivor action |
 | Platform | iPhone (iOS 15.0 or later) |
 | Price | Free to play (optional in-app purchases) |
-| Release | English version coming soon (Japan: October 2, 2026) |
+| Release | October 23, 2026 |
 | Languages | English, Japanese |
-| Regions at launch | United States, United Kingdom, Canada, Australia, New Zealand, Singapore, Japan |
+| Regions | United States, United Kingdom, Canada, Australia, New Zealand, Singapore, Japan |
 | Content | 30 kanji and 870 pairs, 25 kinds × 4 ranks, 10 wards and 10 Calamities, a weekly Night Parade, 28 Game Center achievements |
 | Developer | Sanraku (サン楽), a solo game developer in Japan |
 | Website | https://mtddzd5vw2-gif.github.io/en/ |
-| App Store (Japan only for now) | https://apps.apple.com/jp/app/id6816935558 |
+| App Store | https://apps.apple.com/app/id6816935558 |
 | Contact | wakahisamk@gmail.com |
 
 Images, GIFs and videos may be used freely to cover DENJU.

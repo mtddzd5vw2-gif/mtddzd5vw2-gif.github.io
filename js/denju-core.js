@@ -59,10 +59,9 @@ const AD_SAMPLE = {
   ios: { rewarded: 'ca-app-pub-3940256099942544/1712485313', inter: 'ca-app-pub-3940256099942544/4411468910' },
   android: { rewarded: 'ca-app-pub-3940256099942544/5224354917', inter: 'ca-app-pub-3940256099942544/1033173712' },
 };
-const APP_VERSION = '1.0.0';
-// the App Store page (share texts carry it). Japan only for now; with the English version (1.1) in more stores,
-// switch to the region-free https://apps.apple.com/app/id6816935558
-const APP_STORE_URL = 'https://apps.apple.com/jp/app/id6816935558';
+const APP_VERSION = '1.1.1';
+// the App Store page (share texts carry it). Region-free since 1.1 (English, more stores): it opens each viewer's own store
+const APP_STORE_URL = 'https://apps.apple.com/app/id6816935558';
 const NB = {
   N: window.DenjuNative || null,
   adsOK: false, adsOn: false, iapOK: false, products: {}, busy: false, bt: 0,

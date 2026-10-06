@@ -75,7 +75,7 @@ footer{margin-top:56px;padding-block:24px 40px;border-top:1px solid var(--edge);
     var text = 'The kanji ' + w + ' (' + kanjiGloss(w) + ') holds the shadow of a ' + sp + '. What sleeps in yours? #KanjiSummon #DENJU';
     out.innerHTML = '<div class="sd-card" style="--c:' + E.col + ';--m:url(../img/sil_' + d.kind + '.png)"><div class="sd-word">' + w + '</div><div class="sd-sub">' + kanjiRead(w) + ' · ' + kanjiGloss(w) + '</div><div class="sd-sil" role="img" aria-label="The shadow of a ' + sp + '"></div>'
       + '<p class="sd-line">The shadow of a <b>' + sp + '</b></p><p class="sd-note">Summon ' + w + ' in the app to see its look, rank and name, and whether it is shiny.</p>'
-      + '<div class="sd-act"><a class="cta sd-x" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://mtddzd5vw2-gif.github.io/en/shindan.html') + '">Share on X</a><span class="cta soon">Coming soon to the App Store</span></div></div>';
+      + '<div class="sd-act"><a class="cta sd-x" target="_blank" rel="noopener" href="https://x.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://mtddzd5vw2-gif.github.io/en/shindan.html') + '">Share on X</a><a class="cta" href="https://apps.apple.com/app/id6816935558">Pre-order the app · Oct 23</a></div></div>';
     out.hidden = false;
     if (push !== false) try { history.replaceState(null, '', '?k=' + encodeURIComponent(w)); } catch (e) {}
     out.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });

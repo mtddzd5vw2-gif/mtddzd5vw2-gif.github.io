@@ -59,7 +59,7 @@ const AD_SAMPLE = {
   ios: { rewarded: 'ca-app-pub-3940256099942544/1712485313', inter: 'ca-app-pub-3940256099942544/4411468910' },
   android: { rewarded: 'ca-app-pub-3940256099942544/5224354917', inter: 'ca-app-pub-3940256099942544/1033173712' },
 };
-const APP_VERSION = '1.1.1';
+const APP_VERSION = '1.1.2';
 // the App Store page (share texts carry it). Region-free since 1.1 (English, more stores): it opens each viewer's own store
 const APP_STORE_URL = 'https://apps.apple.com/app/id6816935558';
 const NB = {

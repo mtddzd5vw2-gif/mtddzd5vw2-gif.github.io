@@ -4,7 +4,7 @@ Pick two of 30 kanji, and the spirit beast living in that word wakes up. DENJU i
 
 DENJU is a 3D survivor action game for iPhone, steeped in Japanese folklore. Call the denju, spirit beasts asleep in a city's power lines, and purify the Noise that floods the streets at night. At its heart is the Kanji Summon: pick two of 30 kanji, each shown with its meaning (雷 thunder, 龍 dragon, 桜 sakura, 闇 darkness...), and the denju living in that word wakes up. There are 870 pairs, and the same pair always calls the same denju for everyone.
 
-Battles take one finger: drag to move while your skills fire on their own. Pick upgrades, Awaken your skills and fill the screen with lightning across ten wards and ten Calamities from Japanese myth, including Raijin, the Great Centipede and Omagatsuhi. A run takes about three minutes.
+Battles take one finger: drag to move while your skills fire on their own. Pick upgrades, Awaken your skills and fill the screen with lightning across fifteen wards and fifteen Calamities from Japanese myth, including Raijin, the Great Centipede and Omagatsuhi. One denju fights, with up to four supports behind it. A run takes about three minutes.
 
 ## Features
 
@@ -25,7 +25,7 @@ Battles take one finger: drag to move while your skills fire on their own. Pick 
 | Release | October 23, 2026 |
 | Languages | English, Japanese |
 | Regions | United States, United Kingdom, Canada, Australia, New Zealand, Singapore, Japan |
-| Content | 30 kanji and 870 pairs, 25 kinds × 4 ranks, 10 wards and 10 Calamities, a weekly Night Parade, 28 Game Center achievements |
+| Content | 30 kanji and 870 pairs, 25 kinds × 4 ranks, 14 Traits, 15 wards and 15 Calamities in three chapters, a weekly Night Parade, 28 Game Center achievements |
 | Developer | Sanraku (サン楽), a solo game developer in Japan |
 | Website | https://mtddzd5vw2-gif.github.io/en/ |
 | App Store | https://apps.apple.com/app/id6816935558 |

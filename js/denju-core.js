@@ -59,7 +59,7 @@ const AD_SAMPLE = {
   ios: { rewarded: 'ca-app-pub-3940256099942544/1712485313', inter: 'ca-app-pub-3940256099942544/4411468910' },
   android: { rewarded: 'ca-app-pub-3940256099942544/5224354917', inter: 'ca-app-pub-3940256099942544/1033173712' },
 };
-const APP_VERSION = '1.1.2';
+const APP_VERSION = '1.2.0';
 // the App Store page (share texts carry it). Region-free since 1.1 (English, more stores): it opens each viewer's own store
 const APP_STORE_URL = 'https://apps.apple.com/app/id6816935558';
 const NB = {
@@ -196,6 +196,15 @@ let RM = RM_SYS;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const fmtTime = (s) => { s = Math.max(0, Math.floor(s)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
 
+/* ---------- errors: a small log on the device (the last 20), shown with the version in the support mail ---------- */
+const ERR_KEY = 'denju.err';
+function errLog(msg) {
+  try { const a = JSON.parse(localStorage.getItem(ERR_KEY) || '[]'); a.unshift(new Date().toISOString().slice(0, 16) + ' ' + String(msg).slice(0, 240)); localStorage.setItem(ERR_KEY, JSON.stringify(a.slice(0, 20))); } catch (e) { /* storage blocked */ }
+}
+const errList = () => { try { return JSON.parse(localStorage.getItem(ERR_KEY) || '[]'); } catch (e) { return []; } };
+window.addEventListener('error', (e) => errLog((e.message || 'error') + (e.filename ? ' @' + String(e.filename).split('/').pop() + ':' + e.lineno : '')));
+window.addEventListener('unhandledrejection', (e) => errLog('promise: ' + (e.reason && (e.reason.message || e.reason) || '?')));
+
 /* ---------- data ---------- */
 const ELEMENTS = {
   rai: { k: '雷', nm: tl('雷', 'Thunder'), read: 'いかずち', col: '#ffe14a', perk: tl('会心率 +12%', 'Crit rate +12%') },
@@ -220,6 +229,25 @@ const WEAPONS = {
   nova:   { ic: '雷', name: tl('雷輪', 'Thunder Ring'),    desc: tl('雷の輪を広げ、囲んできた敵を吹き飛ばす', 'A ring of thunder bursts outward and blasts back those around you') },
   homing: { ic: '追', name: tl('追雷', 'Homing Bolts'),    desc: tl('敵を追いかける雷の矢を撃ち出す', 'Fires bolts of lightning that chase the enemy') },
 };
+/* 必殺技 (what 封印解放 unleashes). Everyone has 「落雷」. A 稀 or 神 called by 霊符召喚 (the talisman summon, paid or
+   free talismans) brings its kind's own move, and a 神 its god form 「神・…」 (stronger, and its gauge fills sooner).
+   Birth rank only: 昇格 does not grant one, and beasts from 言霊召喚 or the starter keep 落雷. In battle the party's best
+   move is the one released. Gauge sizes: kills fill it (an elite 12, an oni 4), never the kills of a move in progress. */
+const ULTS = {
+  base:   { k: '雷', name: tl('落雷', 'Thunderfall'),             desc: tl('電柱から十の雷を落とし、最後にまわり一帯を打つ', 'Ten bolts fall from the poles, then one blast strikes everything around you') },
+  fox:    { k: '狐', name: tl('狐火大車輪', 'Foxfire Wheel'),      desc: tl('大きな狐火の輪が渦を描いて広がり、最後に燃えさかる火の海を残す', 'A wheel of great foxfires spirals outward, then leaves a sea of flame behind') },
+  wolf:   { k: '狼', name: tl('千雷走り', 'Thousand-Bolt Run'),    desc: tl('雷が敵から敵へ駆けぬけ、走るあいだ主は雷をまとって傷つかない', 'Lightning runs from foe to foe, and while it runs your denju cannot be hurt') },
+  kirin:  { k: '麒', name: tl('天穿光', 'Heaven-Piercing Light'),  desc: tl('四方へ伸びる光の柱がまわりを薙ぎはらう', 'Pillars of light reach out in every direction and sweep around you') },
+  dragon: { k: '龍', name: tl('雷龍渦', 'Thunder Dragon Vortex'),  desc: tl('雷の渦がまわりの敵を引き寄せ、まとめて吹き飛ばす', 'A thunder vortex drags the foes around you in, then blows them all away') },
+  bird:   { k: '鳳', name: tl('鳳翼天翔', 'Phoenix Ascent'),       desc: tl('雷の羽根の雨を降らせ、編成の霊を回復して守りの光をまとう', 'A rain of thunder feathers falls, your party heals and is shielded by light') },
+};
+const ULT_COST = [180, 150, 125]; // 落雷 / a 稀's move / a 神's move
+function ultOf(d) {
+  const r = d.baseRar || d.rar, g = d.line === FU_LINE ? Math.max(0, RARITY[r].rank - 1) : 0, id = g ? d.kind : 'base', U = ULTS[id];
+  return { id, g, k: U.k, name: g === 2 ? tl('神・' + U.name, 'Divine ' + U.name) : U.name, desc: U.desc, cost: ULT_COST[g] };
+}
+// the move's line for the beast page / sortie: its name and where it comes from
+const ultTier = (u) => (u.g === 2 ? tl('神の必殺技', 'UR finisher') : u.g === 1 ? tl('稀の必殺技', 'SR finisher') : tl('共通の必殺技', 'Common finisher'));
 const RARITY = {
   N:  { mult: 1.0,  col: '#cfd8ea', rank: 0, name: tl('並', 'N') },
   R:  { mult: 1.25, col: '#4fc3ff', rank: 1, name: tl('良', 'R') },
@@ -234,48 +262,85 @@ const NAME_ROMA = { ライ: 'Rai', シラ: 'Shira', カグ: 'Kagu', ヴォル: '
 const NAME_ROMA_B = { ゼン: 'zen', ヌイ: 'nui', ツチ: 'tsuchi', ガ: 'ga', ラ: 'ra', マル: 'maru', テ: 'te', キ: 'ki', ジン: 'jin', カ: 'ka', ヒ: 'hi', ロウ: 'ro', ハ: 'ha', ビ: 'bi',
   レイ: 'rei', オウ: 'o', ヅチ: 'zuchi', ル: 'ru', ナ: 'na', セ: 'se', ミ: 'mi', ト: 'to' };
 const STAGES = [
-  { id: 's1', weak: 'rai', ku: tl('一ノ区', 'Ward 1'), place: tl('駅前アーケード', 'Station Arcade'), boss: tl('停電鬼', 'Blackout Oni'), bk: '停電鬼', bossRead: tl('テイデンキ', ''), mult: 1.0, grid: 0x35f0ff, fog: 0x06091a, sky: ['#05060f', '#0b1233', '#22164a'], sign: '#ff2e88', rec: 20,
+  { id: 's1', weak: 'rai', ku: tl('一ノ区', 'Ward 1'), place: tl('駅前アーケード', 'Station Arcade'), boss: tl('停電鬼', 'Blackout Oni'), bk: '停電鬼', bossRead: tl('テイデンキ', ''), mult: 1.4, grid: 0x35f0ff, fog: 0x06091a, sky: ['#05060f', '#0b1233', '#22164a'], sign: '#ff2e88', rec: 20,
     ecol: [0xff2a6e, 0xff7a1e, 0xa63cff, 0xb4ff3c, 0xff3434],
     desc: tl('シャッター街に「ノイズ」があふれ、街灯が一本ずつ消えていく。', 'Noise floods the shuttered arcade, and the streetlights go out one by one.'), clear: tl('停電鬼を祓った。駅前に灯りが戻った。', 'The Blackout Oni is banished. Light returns to the station.') },
-  { id: 's2', weak: 'sui', ku: tl('二ノ区', 'Ward 2'), place: tl('高架下', 'Under the Tracks'),        boss: tl('逆雷', 'Reverse Thunder'), bk: '逆雷',   bossRead: tl('サカイカズチ', ''), mult: 1.9, grid: 0xff8a3c, fog: 0x0c0708, sky: ['#070406', '#1e0d12', '#3a1a18'], sign: '#ffcf5a', rec: 45,
+  { id: 's2', mx2: { hopper: [30, 0.08] }, weak: 'sui', ku: tl('二ノ区', 'Ward 2'), place: tl('高架下', 'Under the Tracks'),        boss: tl('逆雷', 'Reverse Thunder'), bk: '逆雷',   bossRead: tl('サカイカズチ', ''), mult: 2.4, grid: 0xff8a3c, fog: 0x0c0708, sky: ['#070406', '#1e0d12', '#3a1a18'], sign: '#ffcf5a', rec: 35,
     ecol: [0x7fe6ff, 0xffd23a, 0xff4a26, 0x9dff4a, 0xa86bff], foes: { brute: ['赤鬼', 'あかおに', 'Red Oni'] },
     desc: tl('電車の音にまぎれて、地面から空へ走る逆さの雷が見つかった。', 'Hidden in the roar of the trains, a bolt of lightning runs upside down, from the ground into the sky.'), clear: tl('逆雷を祓った。高架下に静けさが戻った。', 'Reverse Thunder is banished. Quiet returns under the tracks.') },
-  { id: 's3', weak: 'en', ku: tl('三ノ区', 'Ward 3'), place: tl('湾岸変電所', 'Bayside Substation'),    boss: tl('無明王', 'The Lightless King'), bk: '無明王', bossRead: tl('ムミョウオウ', ''), mult: 3.3, grid: 0xb862ff, fog: 0x08051a, sky: ['#040310', '#140a33', '#2a0f3f'], sign: '#35f0ff', rec: 80,
+  { id: 's3', mx2: { bomber: [40, 0.07] }, weak: 'en', ku: tl('三ノ区', 'Ward 3'), place: tl('湾岸変電所', 'Bayside Substation'),    boss: tl('無明王', 'The Lightless King'), bk: '無明王', bossRead: tl('ムミョウオウ', ''), mult: 4.1, grid: 0xb862ff, fog: 0x08051a, sky: ['#040310', '#140a33', '#2a0f3f'], sign: '#35f0ff', rec: 56,
     ecol: [0xd05bff, 0xff4fa8, 0x4f6bff, 0x4dffb0, 0xff3aa0], foes: { brute: ['青鬼', 'あおおに', 'Blue Oni'] },
     desc: tl('湾岸の変電所に、ノイズを束ねる王が居座り、街の電気を呑みこもうとしている。', 'A king who commands the Noise has taken the bayside substation and is swallowing the city\'s power.'), clear: tl('無明王を祓った。けれど、ノイズはまだ止まない。山の手の坂に、狐火が灯りはじめた。', 'The Lightless King is banished. But the Noise has not stopped. On the hillside slopes, foxfires begin to glow.') },
-  { id: 's4', weak: 'sou', ku: tl('四ノ区', 'Ward 4'), place: tl('稲荷坂', 'Inari Slope'),      boss: tl('提灯大入道', 'Lantern Giant'), bk: '提灯大入道', bossRead: tl('チョウチンオオニュウドウ', ''), mult: 5.2, grid: 0xff5a36, fog: 0x0b0508, sky: ['#06040c', '#1c0a1e', '#4a1426'], sign: '#ffc24a', rec: 120,
+  { id: 's4', mx2: { splitter: [20, 0.12] }, weak: 'sou', ku: tl('四ノ区', 'Ward 4'), place: tl('稲荷坂', 'Inari Slope'),      boss: tl('提灯大入道', 'Lantern Giant'), bk: '提灯大入道', bossRead: tl('チョウチンオオニュウドウ', ''), mult: 5.5, grid: 0xff5a36, fog: 0x0b0508, sky: ['#06040c', '#1c0a1e', '#4a1426'], sign: '#ffc24a', rec: 70,
     ecol: [0x8fdcff, 0xfff0c0, 0xc040ff, 0xffa62a, 0xff3a3a], foes: { mote: ['狐火', 'きつねび', 'Foxfire'] }, theme: 'inari', ground: 1, rain: 0, skyO: { moon: true, clouds: 0.45 },
     mix: { brute: [50, 0.08], caster: [10, 0.18], swift: [25, 0.16] }, wave: { caster: 3 },
     desc: tl('千本鳥居の坂道に、祭りでもないのに提灯が灯りはじめた。狐火が列をなしている。', 'On the slope of a thousand torii gates, lanterns light up though there is no festival. Foxfires march in a line.'), clear: tl('提灯大入道を祓った。鳥居の先、鉄塔の丘で嵐が鳴っている。', 'The Lantern Giant is banished. Past the gates, a storm roars over Pylon Hill.') },
-  { id: 's5', weak: 'mei', ku: tl('五ノ区', 'Ward 5'), place: tl('鉄塔の丘', 'Pylon Hill'),    boss: tl('送電大蛇', 'Power Line Orochi'), bk: '送電大蛇', bossRead: tl('ソウデンオロチ', ''), mult: 7.6, grid: 0x2affc8, fog: 0x030a0c, sky: ['#020608', '#06161a', '#0e2e32'], sign: '#8affd8', rec: 170,
+  { id: 's5', mx2: { charger: [30, 0.08] }, weak: 'mei', ku: tl('五ノ区', 'Ward 5'), place: tl('鉄塔の丘', 'Pylon Hill'),    boss: tl('送電大蛇', 'Power Line Orochi'), bk: '送電大蛇', bossRead: tl('ソウデンオロチ', ''), mult: 8.5, grid: 0x2affc8, fog: 0x030a0c, sky: ['#020608', '#06161a', '#0e2e32'], sign: '#8affd8', rec: 83,
     ecol: [0xffe14a, 0xff7a3a, 0x4f7bff, 0xff4f9a, 0xe8f0ff], foes: { mote: ['鬼火', 'おにび', 'Onibi'] }, theme: 'pylon', ground: 3, rain: 1100, fogD: 0.012, skyO: { clouds: 0.95 },
     mix: { brute: [40, 0.1], caster: [15, 0.06], swift: [12, 0.34] }, wave: { swift: 1.5 },
     desc: tl('街へ電気を送る大鉄塔の丘。嵐の夜、送電線そのものが大蛇となって這いまわる。', 'The hill of giant pylons that power the city. On stormy nights, the power lines themselves crawl about as a great serpent.'), clear: tl('送電大蛇を祓った。雷雲の上から、太鼓の音が聞こえる。', 'The Power Line Orochi is banished. Drums echo from above the thunderclouds.') },
-  { id: 's6', weak: 'sui', ku: tl('六ノ区', 'Ward 6'), place: tl('雷雲の頂', 'Thundercloud Peak'),    boss: tl('雷神', 'Raijin'), bk: '雷神', bossRead: tl('ライジン', ''), mult: 10.5, grid: 0xffd54a, fog: 0x0a0618, sky: ['#05030c', '#150c30', '#3a2466'], sign: '#c0b0ff', rec: 230,
+  { id: 's6', mx2: { charger: [25, 0.07], freezer: [60, 0.03] }, weak: 'sui', ku: tl('六ノ区', 'Ward 6'), place: tl('雷雲の頂', 'Thundercloud Peak'),    boss: tl('雷神', 'Raijin'), bk: '雷神', bossRead: tl('ライジン', ''), mult: 11.8, grid: 0xffd54a, fog: 0x0a0618, sky: ['#05030c', '#150c30', '#3a2466'], sign: '#c0b0ff', rec: 103,
     ecol: [0xb07aff, 0x6ff0ff, 0xff3a6a, 0x8dff5a, 0xffe8a0], theme: 'cloud', ground: 2, rain: 0, skyO: { moon: true },
     mix: { brute: [35, 0.12], caster: [12, 0.12], swift: [15, 0.24] }, wave: { brute: 1, caster: 2 }, elites: [35, 70, 105, 130],
     desc: tl('雷雲の上。王に雷を与えていた、すべての元凶が太鼓を打ち鳴らしている。', 'Above the thunderclouds. The source of it all, who gave the kings their lightning, is beating the drums.'), clear: tl('雷神をしずめた。街じゅうの電柱に灯りが戻った――けれど、地下鉄の奥から、まだ低いうなりが聞こえる。', 'Raijin is calmed. Every power pole in the city lights up again — and yet, from deep in the subway, a low hum still rises.') },
   // 第二章: each ward adds a hazard of its own (47_ward2.js)
-  { id: 's7', ch: 2, weak: 'en', ku: tl('七ノ区', 'Ward 7'), place: tl('終電の駅', 'Last Train Station'), boss: tl('大百足', 'Great Centipede'), bk: '大百足', bossRead: tl('オオムカデ', ''), mult: 13.5, grid: 0xffb030, fog: 0x050508, sky: ['#020203', '#050508', '#0b0a10'], sign: '#ffc83a', rec: 280,
+  { id: 's7', mx2: { bomber: [25, 0.08], wall: [70, 0.025] }, ch: 2, weak: 'en', ku: tl('七ノ区', 'Ward 7'), place: tl('終電の駅', 'Last Train Station'), boss: tl('大百足', 'Great Centipede'), bk: '大百足', bossRead: tl('オオムカデ', ''), mult: 15.5, grid: 0xffb030, fog: 0x050508, sky: ['#020203', '#050508', '#0b0a10'], sign: '#ffc83a', rec: 112,
     ecol: [0x9fd8ff, 0xd8ccb8, 0xff4a3a, 0xb4ff5a, 0xffcf4a], foes: { mote: ['迷い火', 'まよいび', 'Lost Flame'], swift: ['鉄鼠', 'てっそ', 'Tesso'], brute: ['黒鬼', 'くろおに', 'Black Oni'] }, theme: 'subway', ground: 4, rain: 0, fogD: 0.016, skyO: { stars: false },
     mix: { brute: [40, 0.1], caster: [20, 0.08], swift: [8, 0.38] }, wave: { swift: 1.8 },
     desc: tl('地下の終着駅。止まったはずの終電が、ノイズを乗せて走りつづけている。', 'An underground terminal. The last train should have stopped, but it keeps running, carrying the Noise.'), clear: tl('大百足を祓った。止まっていた駅の時計が、また動きはじめた。', 'The Great Centipede is banished. The station clock, long stopped, starts ticking again.') },
-  { id: 's8', ch: 2, weak: 'mei', ku: tl('八ノ区', 'Ward 8'), place: tl('電波塔', 'Radio Tower'), boss: tl('大天狗', 'Great Tengu'), bk: '大天狗', bossRead: tl('ダイテング', ''), mult: 16.8, grid: 0xff4a4a, fog: 0x0a0508, sky: ['#040206', '#140a12', '#2a1020'], sign: '#ff6a5a', rec: 330,
+  { id: 's8', mx2: { hopper: [20, 0.08], freezer: [45, 0.04] }, ch: 2, weak: 'mei', ku: tl('八ノ区', 'Ward 8'), place: tl('電波塔', 'Radio Tower'), boss: tl('大天狗', 'Great Tengu'), bk: '大天狗', bossRead: tl('ダイテング', ''), mult: 17.3, grid: 0xff4a4a, fog: 0x0a0508, sky: ['#040206', '#140a12', '#2a1020'], sign: '#ff6a5a', rec: 130,
     ecol: [0xd8e4ff, 0x8a7aff, 0xff5a2a, 0xff3aa0, 0xffd24a], foes: { mote: ['雑音', 'ざつおん', 'Static'], swift: ['烏天狗', 'からすてんぐ', 'Crow Tengu'] }, theme: 'tower', ground: 0, rain: 500, skyO: { clouds: 0.6 },
     mix: { brute: [35, 0.12], caster: [15, 0.14], swift: [15, 0.3] }, wave: { swift: 1.4, caster: 2 },
     desc: tl('街じゅうの電波が集まる塔。砂嵐の中では、電獣の技がとどきにくい。', 'The tower where all the city\'s signals gather. Inside the static, the denju\'s skills struggle to land.'), clear: tl('大天狗を祓った。砂嵐がやみ、塔の灯りが一つずつ戻った。', 'The Great Tengu is banished. The static clears, and the tower lights return one by one.') },
-  { id: 's9', ch: 2, weak: 'rai', ku: tl('九ノ区', 'Ward 9'), place: tl('水没区', 'Sunken District'), boss: tl('海坊主', 'Umibozu'), bk: '海坊主', bossRead: tl('ウミボウズ', ''), mult: 20.5, grid: 0x3ab8ff, fog: 0x030a12, sky: ['#02040a', '#061224', '#0c2238'], sign: '#5ad0ff', rec: 390,
+  { id: 's9', mx2: { freezer: [20, 0.05], splitter: [30, 0.1] }, ch: 2, weak: 'rai', ku: tl('九ノ区', 'Ward 9'), place: tl('水没区', 'Sunken District'), boss: tl('海坊主', 'Umibozu'), bk: '海坊主', bossRead: tl('ウミボウズ', ''), mult: 18.7, grid: 0x3ab8ff, fog: 0x030a12, sky: ['#02040a', '#061224', '#0c2238'], sign: '#5ad0ff', rec: 150,
     ecol: [0x7affe8, 0xa0c8ff, 0x5a8aff, 0xffb45a, 0xffe8a0], foes: { mote: ['海月火', 'くらげび', 'Jellyfish Flame'], swift: ['舟幽霊', 'ふなゆうれい', 'Funayurei'], brute: ['牛鬼', 'うしおに', 'Ushi-oni'] }, theme: 'flood', ground: 5, rain: 900, fogD: 0.016, skyO: { moon: true, clouds: 0.5 },
     mix: { brute: [30, 0.14], caster: [15, 0.1], swift: [12, 0.28] }, wave: { brute: 1, swift: 1.2 },
     desc: tl('海があふれ、商店街が水に沈んだ。潮が満ちると足が重くなる。電柱のまわりの足場へ。', 'The sea has overflowed and the shopping street lies underwater. When the tide rises, your feet grow heavy. Head for the footing around the poles.'), clear: tl('海坊主を祓った。潮が引いた水の底に、常世へつづく門が見えた。', 'Umibozu is banished. As the tide ebbs, a gate to Tokoyo appears at the bottom of the water.') },
-  { id: 's10', ch: 2, weak: 'sou', ku: tl('十ノ区', 'Ward 10'), place: tl('常世', 'Tokoyo'), boss: tl('大禍津日神', 'Omagatsuhi'), bk: '大禍津日神', bossRead: tl('オオマガツヒノカミ', ''), mult: 25, grid: 0xff2e4a, fog: 0x0c0306, sky: ['#060104', '#1a0408', '#3a0a10'], sign: '#ff5a6a', rec: 450,
+  { id: 's10', mx2: { wall: [40, 0.03], charger: [25, 0.07], bomber: [50, 0.05] }, ch: 2, weak: 'sou', ku: tl('十ノ区', 'Ward 10'), place: tl('常世', 'Tokoyo'), boss: tl('大禍津日神', 'Omagatsuhi'), bk: '大禍津日神', bossRead: tl('オオマガツヒノカミ', ''), mult: 23.5, grid: 0xff2e4a, fog: 0x0c0306, sky: ['#060104', '#1a0408', '#3a0a10'], sign: '#ff5a6a', rec: 175,
     ecol: [0xa8d8ff, 0xd8b0ff, 0xffd24a, 0x7affc8, 0xff4a5a], foes: { mote: ['黄泉火', 'よもつび', 'Yomi Flame'], swift: ['黄泉醜女', 'よもつしこめ', 'Yomotsu-shikome'], brute: ['八雷', 'やくさのいかづち', 'Eight Thunders'] }, theme: 'yomi', ground: 6, rain: 0, fogD: 0.017, skyO: { moon: true, moonCol: 0xff5a4a },
     mix: { brute: [30, 0.14], caster: [12, 0.14], swift: [12, 0.26] }, wave: { brute: 2, caster: 2, swift: 1.3 }, elites: [35, 70, 105, 130], final: true,
-    desc: tl('ノイズが生まれる場所。ここで倒したノイズは、電柱のそばでなければ一度だけよみがえる。', 'Where the Noise is born. Noise banished here rises once more, unless it falls beside a power pole.'), clear: tl('大禍津日神を祓った。常世の門が閉じ、街に本当の夜明けが来た。', 'Omagatsuhi is banished. The gate of Tokoyo closes, and a true dawn comes to the city.') },
+    desc: tl('ノイズが生まれる場所。ここで倒したノイズは、電柱のそばでなければ一度だけよみがえる。', 'Where the Noise is born. Noise banished here rises once more, unless it falls beside a power pole.'), clear: tl('大禍津日神を祓った。常世の門が閉じ、街に本当の夜明けが来た――けれど、閉じた門の裏側で、街の影が目を開けた。', 'Omagatsuhi is banished. The gate of Tokoyo closes, and a true dawn comes to the city. But behind the closed gate, the city\'s shadow opens its eyes.') },
+  // 第三章 (v1.2): the city's shadow side. Districts from before at a twisted hour, crowded with the new yokai,
+  // and the true forms (真) of five 大禍. bossLook: whose 3D form the 大禍 takes
+  { id: 's11', ch: 3, weak: 'mei', ku: tl('十一ノ区', 'Ward 11'), place: tl('裏・稲荷坂', 'Inari Slope, Reversed'), boss: tl('真・提灯大入道', 'True Lantern Giant'), bk: '真・提灯大入道', bossLook: 's4', bossRead: tl('シン・チョウチンオオニュウドウ', ''), mult: 32.5, grid: 0xd8f0ff, fog: 0x0a0a14, sky: ['#05060c', '#141a30', '#3a3a6a'], sign: '#c8e8ff', rec: 205,
+    ecol: [0xf0f6ff, 0xffd6f0, 0x8aa0ff, 0xfff0a0, 0xff5aa0], ecolX: { splitter: 0xffffff, hopper: 0xffc0e0 }, foes: { mote: ['白狐火', 'しろきつねび', 'White Foxfire'] }, theme: 'inari', ground: 1, rain: 0, skyO: { moon: true, clouds: 0.3 },
+    mix: { splitter: [8, 0.16], hopper: [15, 0.12], brute: [40, 0.07], caster: [12, 0.12], swift: [20, 0.12] }, wave: { caster: 3, swift: 1.2 },
+    desc: tl('千本鳥居が逆さに映る、夜明け前の坂。白い狐火と、分かれて増える木霊が坂を埋める。', 'The slope before dawn, its thousand gates reflected upside down. White foxfires and kodama that split and multiply fill the slope.'), clear: tl('真・提灯大入道を祓った。坂の上で、鉄塔が雪をかぶっている。', 'The True Lantern Giant is banished. At the top of the slope, the pylons are capped with snow.') },
+  { id: 's12', ch: 3, weak: 'en', ku: tl('十二ノ区', 'Ward 12'), place: tl('裏・雪の鉄塔', 'Snowbound Pylons'), boss: tl('真・送電大蛇', 'True Power Line Orochi'), bk: '真・送電大蛇', bossLook: 's5', bossRead: tl('シン・ソウデンオロチ', ''), mult: 35.5, grid: 0xbfe8ff, fog: 0x0c1218, sky: ['#0a0e14', '#1c2a36', '#4a5a6a'], sign: '#e8f6ff', rec: 230,
+    ecol: [0xe8f4ff, 0x9fd8ff, 0x6a8aff, 0xffe0a0, 0xffffff], ecolX: { freezer: 0xdff4ff, charger: 0xffffff }, foes: { mote: ['雪ん子', 'ゆきんこ', 'Yukinko'] }, theme: 'pylon', ground: 3, rain: 900, fogD: 0.015, skyO: { clouds: 0.9 },
+    mix: { freezer: [10, 0.06], charger: [12, 0.14], brute: [40, 0.08], caster: [20, 0.05], swift: [10, 0.2] }, wave: { swift: 1.4 },
+    desc: tl('吹雪の丘。雪女の冷気で足が重くなり、白い布が吹雪にまぎれて突っこんでくる。', 'A hill in a blizzard. Yuki-onna\'s cold makes your feet heavy, and white cloth rushes at you through the snow.'), clear: tl('真・送電大蛇を祓った。丘のふもとの地下鉄から、非常灯の赤い光がもれている。', 'The True Power Line Orochi is banished. From the subway at the foot of the hill, red emergency light leaks out.') },
+  { id: 's13', ch: 3, weak: 'sou', ku: tl('十三ノ区', 'Ward 13'), place: tl('裏・非常灯の駅', 'Emergency-Lit Station'), boss: tl('真・大百足', 'True Great Centipede'), bk: '真・大百足', bossLook: 's7', bossRead: tl('シン・オオムカデ', ''), mult: 39.4, grid: 0xff3a2a, fog: 0x0e0304, sky: ['#060102', '#140405', '#2a0808'], sign: '#ff4a3a', rec: 255,
+    ecol: [0xffb0a0, 0xd8ccb8, 0xff4a3a, 0xffcf4a, 0xffe14a], ecolX: { bomber: 0xff6a1a, wall: 0xa89888 }, foes: { swift: ['鉄鼠', 'てっそ', 'Tesso'], brute: ['黒鬼', 'くろおに', 'Black Oni'] }, theme: 'subway', ground: 4, rain: 0, fogD: 0.018, skyO: { stars: false },
+    mix: { bomber: [8, 0.12], wall: [30, 0.04], brute: [35, 0.08], caster: [20, 0.06], swift: [8, 0.3] }, wave: { swift: 1.8, brute: 1 },
+    desc: tl('非常灯だけがともる地下の駅。燃える火車が転がり、塗壁が通路をふさぐ。終電はまだ走っている。', 'An underground station lit only by emergency lights. Burning kasha roll in, nurikabe block the way, and the last train still runs.'), clear: tl('真・大百足を祓った。地上では、電波塔の砂嵐が緑に光っている。', 'The True Great Centipede is banished. Above ground, the radio tower\'s static glows green.') },
+  { id: 's14', ch: 3, weak: 'rai', ku: tl('十四ノ区', 'Ward 14'), place: tl('裏・緑の電波塔', 'Green Static Tower'), boss: tl('真・大天狗', 'True Great Tengu'), bk: '真・大天狗', bossLook: 's8', bossRead: tl('シン・ダイテング', ''), mult: 44, grid: 0x4aff8a, fog: 0x030a06, sky: ['#020604', '#06140a', '#0e2a16'], sign: '#8affb0', rec: 280,
+    ecol: [0xb0ffcc, 0x6aff8a, 0xff5a2a, 0x4affd0, 0xffd24a], ecolX: { hopper: 0x9aff6a, charger: 0xe0ffe8, freezer: 0xc0ffe8 }, foes: { mote: ['雑音', 'ざつおん', 'Static'], swift: ['烏天狗', 'からすてんぐ', 'Crow Tengu'] }, theme: 'tower', ground: 0, rain: 500, skyO: { clouds: 0.6 },
+    mix: { hopper: [8, 0.12], charger: [15, 0.1], freezer: [30, 0.04], brute: [35, 0.08], caster: [15, 0.1], swift: [15, 0.16] }, wave: { swift: 1.4, caster: 2 },
+    desc: tl('緑の砂嵐が塔をつつむ。跳ねる唐傘、突っこむ一反木綿、冷たい雪女。技がとどきにくい中を生きのびろ。', 'Green static wraps the tower. Hopping karakasa, rushing ittan-momen, cold yuki-onna: survive where your skills struggle to land.'), clear: tl('真・大天狗を祓った。塔の天辺から、彼岸花に染まる黄泉の底が見えた。', 'The True Great Tengu is banished. From the top of the tower, the depths of Yomi come into view, red with spider lilies.') },
+  { id: 's15', ch: 3, weak: 'sui', ku: tl('十五ノ区', 'Ward 15'), place: tl('裏・黄泉の底', 'Depths of Yomi'), boss: tl('真・大禍津日神', 'True Omagatsuhi'), bk: '真・大禍津日神', bossLook: 's10', bossRead: tl('シン・オオマガツヒノカミ', ''), mult: 49.4, grid: 0xffe8a0, fog: 0x0c0a06, sky: ['#08060a', '#1c1610', '#4a3a20'], sign: '#ffe8a0', rec: 310,
+    ecol: [0xfff6d8, 0xffe0a0, 0xffd24a, 0xd0ffe8, 0xffffff], ecolX: { splitter: 0xfff0c0, bomber: 0xffb04a, wall: 0xd8c8a8 }, foes: { mote: ['黄泉火', 'よもつび', 'Yomi Flame'], swift: ['黄泉醜女', 'よもつしこめ', 'Yomotsu-shikome'], brute: ['八雷', 'やくさのいかづち', 'Eight Thunders'] }, theme: 'yomi', ground: 6, rain: 0, fogD: 0.016, skyO: { moon: true, moonCol: 0xfff0c0 },
+    mix: { splitter: [10, 0.1], bomber: [20, 0.07], wall: [35, 0.03], hopper: [15, 0.06], charger: [25, 0.05], freezer: [45, 0.03], brute: [30, 0.1], caster: [12, 0.08], swift: [12, 0.14] }, wave: { brute: 2, caster: 2, swift: 1.3 }, elites: [35, 70, 105, 130], final: true, chEnd: 3,
+    desc: tl('常世のさらに奥、彼岸花の咲く黄泉の底。これまでのすべての妖が押し寄せる。大禍津日神の真の姿が待っている。', 'Deeper than Tokoyo, where spider lilies bloom: the depths of Yomi. Every yokai you have met surges in, and the true form of Omagatsuhi waits.'), clear: tl('真・大禍津日神を祓った。街の影は静かに眠り、電線には、いつもの夜の音が戻った。', 'True Omagatsuhi is banished. The city\'s shadow sleeps quietly, and the ordinary sound of night returns to the power lines.') },
 ];
-const CHAPTERS = [{ at: 0, name: tl('第一章　電線の街', 'Chapter 1 — City of Wires') }, { at: 6, name: tl('第二章　常世の門', 'Chapter 2 — Gate of Tokoyo') }];
+const CHAPTERS = [{ at: 0, name: tl('第一章　電線の街', 'Chapter 1 — City of Wires') }, { at: 6, name: tl('第二章　常世の門', 'Chapter 2 — Gate of Tokoyo') }, { at: 10, name: tl('第三章　裏の街', 'Chapter 3 — The Shadow City') }, { at: 10, name: tl('第三章　裏の街', 'Chapter 3 — The Shadow City') }];
 const RUN_BOSS_AT = 150; // seconds
+// v1.2 (harder): the noise and the 大禍 hit 12% harder everywhere but 百鬼夜行 (its curve and ranking stay as they were)
+const FOE_DMG = 1.12;
+/* v1.2: one denju per sortie (the owner, 2026-10-13: three made it too easy). It can copy one more technique in a run
+   (写し技, at 80% power), so fusions stay. The lone denju's HP counts double, and the noise is a little softer to make
+   up for the two beasts that are gone; 推奨霊力 is for one denju. */
+const PARTY_MAX = 1, SOLO_HP = 2.0, SOLO_RATE = 0.75, FOE_HP_SOLO = 0.55, COPY_POW = 0.8, COPY_FROM_LV = 3;
 const WEAK_MUL = 1.3; // a district's noise takes 30% more from beasts of its weak element
+/* v1.2 守り手 and 重ね (the owner, 2026-10-13: "one 神 and the summons stop mattering").
+   守り手: up to four more denju stand behind the one that fights. They do not fight; each lends part of its 力 and 霊
+   (並6% / 良9% / 稀14% / 神20%, ×1.5 when its element is the ward's weak one), and the 写し技 is taken only from
+   their techniques (at 50–90% by their rank). 推奨霊力 counts the fighter and its 守り手 together.
+   重ね: a 霊符 denju of the same kind and the same rank can be laid onto another to raise its ★ (up to ★5, +10% 力・霊
+   each). It is an upgrade of one denju by any one of a broad class, never a set of named ones: no card-matching. */
+const SUP_MAX = 4, SUP_SHARE = { N: 0.06, R: 0.09, SR: 0.14, UR: 0.2 }, SUP_WEAK = 1.5;
+const COPY_BY = { N: 0.5, R: 0.6, SR: 0.75, UR: 0.9 };
+const STAR_MAX = 5, STAR_STEP = 0.1, STAR_COST = { N: 300, R: 800, SR: 2500, UR: 6000 };
 
 /* ---------- DNA ----------
    every beast is born from a seal code: its "line" (霊符 = talisman summon, 言霊 = word summon,
@@ -331,14 +396,48 @@ function makeDNA(line, num, ov) {
 }
 // なかよし (affection, 0–5 hearts from daily petting) adds 2% power per heart
 const AFF_MAX = 5, AFF_POW = 0.02;
-function beastStats(d, lv, aff = 0) {
-  const K = KINDS[d.kind], m = RARITY[d.rar].mult * (1 + (lv - 1) * 0.08);
+/* 個性 (v1.2): 性格 now leans the stats (得意・苦手), and every denju has 特性 — battle traits drawn from its own seal,
+   the same for everyone with that seal or word: 並・良 one, 稀 two, 神 three (a promoted denju gains the next one). */
+const NATURE_LEAN = {
+  すなお: {}, あまえんぼう: { hp: 0.08, pow: -0.04 }, のんき: { hp: 0.1, spd: -0.06 }, くいしんぼう: { hp: 0.06, pow: 0.04, spd: -0.08 },
+  わんぱく: { pow: 0.1, hp: -0.06 }, こうきしん: { spd: 0.08, hp: -0.04 }, やさしい: { hp: 0.06, spd: 0.04, pow: -0.06 }, さみしがり: { pow: 0.08, spd: -0.04 },
+  きまぐれ: { spd: 0.06, pow: 0.04, hp: -0.08 }, まけずぎらい: { pow: 0.12, hp: -0.08 }, おっとり: { hp: 0.12, spd: -0.08 }, ねぼすけ: { hp: 0.08, pow: -0.02, spd: -0.04 },
+};
+const LEAN_CACHE = new Map();
+const leanOf = (d) => { if (!LEAN_CACHE.has(d.key)) LEAN_CACHE.set(d.key, typeof natureOf === 'function' ? NATURE_LEAN[natureOf(d)] || {} : {}); return LEAN_CACHE.get(d.key); };
+const TRAITS = {
+  ikari:    { k: '怒', name: tl('怒髪', 'Fury'), desc: tl('HPが半分を切ると、技の威力 +30%', 'Below half HP, skill damage +30%') },
+  shun:     { k: '疾', name: tl('俊足', 'Swift'), desc: tl('移動の速さ +12%', 'Move speed +12%') },
+  ganjo:    { k: '堅', name: tl('頑丈', 'Sturdy'), desc: tl('受けるダメージ -12%', 'Damage taken -12%') },
+  shingan:  { k: '眼', name: tl('心眼', 'Keen Eye'), desc: tl('会心率 +8%', 'Crit rate +8%') },
+  reimyaku: { k: '脈', name: tl('霊脈', 'Ley Line'), desc: tl('電柱と共鳴できる範囲 +35%', 'Pole resonance range +35%') },
+  kyurei:   { k: '吸', name: tl('吸霊', 'Spirit Pull'), desc: tl('霊子を引き寄せる範囲 +50%', 'Spirit pickup range +50%') },
+  soujuku:  { k: '早', name: tl('早熟', 'Quick Study'), desc: tl('戦いの中の経験 +20%', 'In-battle XP +20%') },
+  renki:    { k: '連', name: tl('連気', 'Rapid'), desc: tl('技の間隔 -10%', 'Skill cooldowns -10%') },
+  ooki:     { k: '大', name: tl('大技', 'Big Moves'), desc: tl('技の範囲 +15%', 'Skill area +15%') },
+  kariudo:  { k: '狩', name: tl('狩人', 'Hunter'), desc: tl('精鋭と大禍への威力 +20%', 'Damage to elites and Calamities +20%') },
+  fukutsu:  { k: '屈', name: tl('不屈', 'Unyielding'), desc: tl('一度だけ、倒れるほどの攻撃をHP20%で耐える', 'Once, survive a fatal blow at 20% HP') },
+  saisei:   { k: '癒', name: tl('再生', 'Regenerate'), desc: tl('毎秒 最大HPの0.4%回復', 'Heal 0.4% of max HP each second') },
+  raishin:  { k: '雷', name: tl('雷心', 'Storm Heart'), desc: tl('封印解放のゲージが20%たまりやすい', 'Seal Release charges 20% faster') },
+  shugo:    { k: '守', name: tl('守護霊', 'Guardian'), desc: tl('戦いのはじめの20秒、受けるダメージ半分', 'Damage taken halved for the first 20 seconds') },
+};
+const TRAIT_KEYS = Object.keys(TRAITS);
+const TRAIT_CACHE = new Map();
+function traitsOf(d) {
+  if (!TRAIT_CACHE.has(d.key)) { const r = rngFrom('denju/trait/' + d.key), ks = TRAIT_KEYS.slice(); for (let i = ks.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [ks[i], ks[j]] = [ks[j], ks[i]]; } TRAIT_CACHE.set(d.key, ks); }
+  return TRAIT_CACHE.get(d.key).slice(0, 1 + Math.max(0, RARITY[d.rar].rank - 1));
+}
+function beastStats(d, lv, aff = 0, star = 0) {
+  const K = KINDS[d.kind], m = RARITY[d.rar].mult * (1 + (lv - 1) * 0.08) * (1 + clamp(star || 0, 0, STAR_MAX) * STAR_STEP), L = leanOf(d);
   return {
-    pow: Math.round(K.pow * m * (0.9 + d.ivPow * 0.2) * (1 + clamp(aff || 0, 0, AFF_MAX) * AFF_POW) * 10) / 10,
-    hp: Math.round(K.hp * m * (0.9 + d.ivHp * 0.2)),
-    spd: Math.round((0.92 + d.ivSpd * 0.16) * 100),
+    pow: Math.round(K.pow * m * (0.9 + d.ivPow * 0.2) * (1 + clamp(aff || 0, 0, AFF_MAX) * AFF_POW) * (1 + (L.pow || 0)) * 10) / 10,
+    hp: Math.round(K.hp * m * (0.9 + d.ivHp * 0.2) * (1 + (L.hp || 0))),
+    spd: Math.round((0.92 + d.ivSpd * 0.16) * (1 + (L.spd || 0)) * 100),
   };
 }
+// an owned denju's stats, with its level, bond and ★
+const statsOf = (e) => beastStats(dnaOf(e), e.lv, e.aff, e.star || 0);
+const powOf = (st) => st.pow + st.hp / 10; // 霊力 of one denju
 const expNeed = (lv) => 40 + lv * 30;
 const powerCost = (lv) => 60 + lv * 40;
 const MAX_LV = 30;
@@ -357,18 +456,19 @@ let S = null;
 // the game day turns over at 04:00 local time
 const dayKeyOf = (ms = Date.now()) => { const d = new Date(ms - 4 * 3600e3); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 const monthKeyOf = (ms = Date.now()) => dayKeyOf(ms).slice(0, 7);
-const freshDay = (key) => ({ key, ads: 0, word: 0, wordAd: 0, runs: 0, kills: 0, boss: 0, pets: 0, got: [], bonus: false, moon: false, double: 0 });
+const freshDay = (key) => ({ key, ads: 0, word: 0, wordAd: 0, runs: 0, kills: 0, boss: 0, pets: 0, got: [], bonus: false, moon: false, double: 0, free: false });
 function newSave() {
   return {
-    v: 2, reishi: 300, beasts: [], party: [], leader: null, cleared: 0, seen: [], muted: false, summons: 0, tut: false, best: {},
+    v: 2, reishi: 300, beasts: [], party: [], sup: [], leader: null, cleared: 0, seen: [], muted: false, summons: 0, tut: false, best: {},
     fu: START_FU, fuP: 0, pity: 0, dp: {}, dsel: {}, day: freshDay(dayKeyOf()), login: { last: '', n: 0 },
-    moonUntil: 0, noAds: false, bought: {}, tx: [], age: null, spend: { m: monthKeyOf(), yen: 0 }, runs: 0, lastInter: 0, words: [], hint: {}, awayT: Date.now(), notif: { on: false, asked: 0, next: 0 }, calm: false, dexRew: {}, hk: null, chal: {}, feat: [], stat: {}, yk: {}, fused: [], mt: null, seals: [],
+    moonUntil: 0, noAds: false, bought: {}, tx: [], age: null, spend: { m: monthKeyOf(), yen: 0 }, runs: 0, lastInter: 0, words: [], hint: {}, awayT: Date.now(), notif: { on: false, asked: 0, next: 0 }, calm: false, dexRew: {}, hk: null, chal: {}, feat: [], stat: {}, yk: {}, fused: [], mt: null, seals: [], sealsGold: [], bg: null,
   };
 }
 function migrate(s) {
   if (!s || !Array.isArray(s.beasts)) return null;
   const base = newSave();
   if (s.v === 1) { s.fu = START_FU; s.v = 2; } // players from the photo-summon era get the new starter talismans too
+  if (!Array.isArray(s.sup)) s.sup = (s.party || []).slice(1, 1 + SUP_MAX); // the three-denju days: the other two step behind as 守り手
   for (const k in base) if (s[k] === undefined) s[k] = base[k];
   if (!s.day || !s.day.key) s.day = freshDay(dayKeyOf());
   for (const k in base.day) if (s.day[k] === undefined) s.day[k] = base.day[k];
@@ -409,7 +509,8 @@ function addBeast(d) {
   if (owned(d.key)) return false;
   S.beasts.push({ k: d.key, line: d.line, num: d.num, lv: 1, exp: 0, t: Date.now() });
   const sid = d.el + ':' + d.kind; if (!S.seen.includes(sid)) S.seen.push(sid);
-  if (S.party.length < 3) S.party.push(d.key);
+  if (S.party.length < PARTY_MAX) S.party.push(d.key);
+  else if (Array.isArray(S.sup) && !S.supManual && typeof supAuto === 'function') supAuto(STAGES[Math.min(S.cleared, STAGES.length - 1)]); // until the player sets them by hand, the best four stand behind
   if (!S.leader) S.leader = d.key;
   S.summons++; return true;
 }
@@ -557,15 +658,16 @@ function aishoOf(w1, w2) {
 }
 
 /* ---------- rewards ---------- */
-const AD_FU_DAY = 2;            // talismans from watching ads, per day
-const LOGIN_TRACK = [{ fu: 1 }, { reishi: 500 }, { fu: 1 }, { reishi: 800 }, { fu: 2 }, { reishi: 1200 }, { fu: 5 }]; // the 7th day is worth the most (a week in a row)
+const AD_FU_DAY = 1;            // talismans from watching ads, per day (1.2.0: was 2 — free talismans stay rare)
+// v1.2: talismans are not handed out easily (the owner, 2026-10-13): 霊子 every day, talismans only on the 7th
+const LOGIN_TRACK = [{ reishi: 300 }, { reishi: 500 }, { reishi: 800 }, { reishi: 1000 }, { reishi: 1200 }, { reishi: 1500 }, { fu: 2 }];
 const MISSIONS = [
   { id: 'pet', name: tl('電獣をなでる', 'Pet a denju'), need: 1, key: 'pets', rew: { reishi: 100 } },
   { id: 'run', name: tl('出撃する', 'Go on a sortie'), need: 1, key: 'runs', rew: { reishi: 150 } },
   { id: 'kill', name: tl('ノイズを400体祓う', 'Banish 400 Noise'), need: 400, key: 'kills', rew: { reishi: 300 } },
-  { id: 'boss', name: tl('大禍を1体浄化する', 'Purify 1 Calamity'), need: 1, key: 'boss', rew: { fu: 1 } },
+  { id: 'boss', name: tl('大禍を1体浄化する', 'Purify 1 Calamity'), need: 1, key: 'boss', rew: { reishi: 500 } },
 ];
-const MISSION_BONUS = { fu: 1 };
+const MISSION_BONUS = { reishi: 800 };
 const rewText = (r) => [r.fu ? tl(`召喚符×${r.fu}`, `Talisman ×${r.fu}`) : '', r.reishi ? tl(`霊子${numL(r.reishi)}`, `${numL(r.reishi)} Spirit`) : ''].filter(Boolean).join(tl('・', ' · '));
 function grant(r, paid) { if (r.fu) { if (paid) S.fuP += r.fu; else S.fu += r.fu; } if (r.reishi) S.reishi += r.reishi; }
 const missionDone = (m) => (S.day[m.key] || 0) >= m.need;
@@ -580,7 +682,8 @@ const depthCap = (st) => (depthBest(st) < 0 ? 0 : Math.min(DEPTH_MAX, depthBest(
 const depthOf = (st) => clamp(S.dsel[st.id] || 0, 0, depthCap(st));
 const depthHp = (dp) => 1 + 0.6 * dp, depthDmg = (dp) => 1 + 0.35 * dp;
 const depthRec = (st, dp) => Math.round(st.rec * (1 + 0.55 * dp));
-const depthFirstFu = (dp) => (dp === 0 ? 5 : dp <= 10 ? 2 : 3);
+// a depth purified for the first time: one talisman for the ward itself and for every 5th depth, 霊子 for the rest
+const depthFirstRew = (dp) => (dp === 0 ? { fu: 1 } : dp % 5 === 0 ? { fu: 1, reishi: 400 * dp } : { reishi: 400 * dp });
 /* ---------- 図譜の朱印: a red seal on the 電獣帳 for each full element row, each full kind column and all 25.
    Honour only — no talismans, 霊子 or power. Species come from paid summons too, so a prize for a set of them
    would be 「カード合わせ」 under 景品表示法 (消費者庁 Q&A). A seal of honour is not an economic benefit. ---------- */
@@ -656,12 +759,51 @@ const awayAmount = () => Math.floor(awayHours() * awayRate());
 const PROMO_COST = [5000, 20000]; // 並→良, 良→稀 (霊子)
 const promoNext = (e) => { const r = RARITY[dnaOf(e).rar].rank; return r < 2 ? r + 1 : -1; };
 const promoReady = (e) => promoNext(e) > 0 && e.lv >= MAX_LV && (e.aff || 0) >= AFF_MAX;
+/* ---------- 守り手 (supports) and 重ね (★) — the rules are with SUP_MAX in 10_core ---------- */
+const supEntries = () => (S.sup || []).map(owned).filter((e) => e && !S.party.includes(e.k)).slice(0, SUP_MAX);
+const supShare = (e, st) => SUP_SHARE[dnaOf(e).rar] * (st && dnaOf(e).el === st.weak ? SUP_WEAK : 1);
+// what the 守り手 lend the fighter in a ward (or, with no ward, without the weak-element bonus)
+function supBonus(st, list = supEntries()) {
+  let pow = 0, hp = 0;
+  for (const e of list) { const s = statsOf(e), k = supShare(e, st); pow += s.pow * k; hp += s.hp * k; }
+  return { pow: Math.round(pow * 10) / 10, hp: Math.round(hp) };
+}
+// 霊力: the fighter and what its 守り手 lend (in that ward, when one is given)
+function partyPower(st) {
+  const e = S.party.map(owned).filter(Boolean)[0]; if (!e) return 0;
+  const a = statsOf(e), b = supBonus(st);
+  return Math.round(powOf(a) + b.pow + b.hp / 10);
+}
+// おまかせ: the four that lend the most in this ward (the weak element counts), never the fighter
+function supAuto(st) {
+  const f = S.party[0];
+  S.sup = S.beasts.filter((e) => e.k !== f).map((e) => ({ k: e.k, v: powOf(statsOf(e)) * supShare(e, st) }))
+    .sort((a, b) => b.v - a.v).slice(0, SUP_MAX).map((x) => x.k);
+}
+const starOf = (e) => clamp(e.star || 0, 0, STAR_MAX);
+// 重ね: what can be laid onto e — a 霊符 denju of the same kind and the same (current) rank, not going out or behind
+function stackMats(e) {
+  const d = dnaOf(e); if (d.line !== FU_LINE || starOf(e) >= STAR_MAX) return [];
+  return S.beasts.filter((x) => { if (x.k === e.k || S.party.includes(x.k) || (S.sup || []).includes(x.k) || S.leader === x.k) return false;
+    const y = dnaOf(x); return y.line === FU_LINE && y.kind === d.kind && y.rar === d.rar; });
+}
+const stackCost = (e) => STAR_COST[dnaOf(e).rar];
+function stackBeast(key, matKey) {
+  const e = owned(key), m = owned(matKey); if (!e || !m || !stackMats(e).some((x) => x.k === matKey)) return false;
+  const c = stackCost(e); if (S.reishi < c) return false;
+  S.reishi -= c; e.star = starOf(e) + 1; S.beasts = S.beasts.filter((x) => x.k !== matKey);
+  statAdd('stack'); persist(); TD.send('Beast.stacked', { 'Beast.rank': RARITY[dnaOf(e).rar].rank, 'Beast.star': e.star }); return true;
+}
 /* ---------- release (送還) ---------- */
 const RELEASE_BASE = { N: 40, R: 120, SR: 500, UR: 1800 };
 const releaseValue = (e) => RELEASE_BASE[dnaOf(e).rar] + (e.lv - 1) * 30;
+// 祭りパス's talismans (the rules are with 季節の祭り below)
+const MT_PASS = { now: 5, goal: [3, 3, 3, 3], seal: 6 };
+const mtPassTotal = () => MT_PASS.now + MT_PASS.goal.reduce((a, b) => a + b, 0) + MT_PASS.seal;
 /* ---------- shop catalog (JPY; the store's own price label is shown when available) ---------- */
 const SHOP = [
   { id: 'denju.starter', type: 'consumable', kind: 'starter', name: tl('はじまりの符', 'Starter Talismans'), yen: 480, give: { fu: 10, reishi: 3000 }, once: true, desc: tl('召喚符×10 と 霊子3,000。1回だけ買えるお得な包み', 'Talisman ×10 and 3,000 Spirit. A one-time bundle') },
+  { id: 'denju.pass', type: 'consumable', kind: 'pass', name: tl('祭りパス', 'Festival Pass'), yen: 980, give: { fu: MT_PASS.now }, desc: tl(`今月の祭りだけ：すぐに召喚符×${MT_PASS.now}、祭りの4つの目標と朱印の報酬に召喚符を追加（あわせて×${mtPassTotal()}）。朱印は金色に`, `This month's festival only: Talisman ×${MT_PASS.now} now, plus extra talismans on its four goals and its seal (×${mtPassTotal()} in all). The seal turns gold`) },
   { id: 'denju.moon', type: 'consumable', kind: 'moon', name: tl('月の符', 'Moon Talisman'), yen: 600, give: { fu: 3 }, daily: 1, days: 30, desc: tl('すぐに召喚符×3。さらに30日間、毎日ログインで召喚符×1（最大33枚）', 'Talisman ×3 now, then Talisman ×1 at each daily login for 30 days (up to 33)') },
   { id: 'denju.noads', type: 'nonconsumable', kind: 'noads', name: tl('広告なし', 'No Ads'), yen: 980, desc: tl('戦いのあとの全画面広告が出なくなる。復活と報酬2倍も広告を見ずに使える（無料の召喚符をもらう広告は任意でそのまま）', 'No full-screen ads after battles. Revive and double rewards without ads (the optional ad for a free talisman stays)') },
   { id: 'denju.fu5', type: 'consumable', kind: 'fu', name: tl('召喚符×5', 'Talisman ×5'), yen: 500, give: { fu: 5 } },
@@ -682,8 +824,10 @@ function applyPurchase(it, txId) {
   if (it.give) grant(it.give, true);
   if (it.kind === 'moon') { S.moonUntil = Math.max(Date.now(), S.moonUntil) + it.days * 86400e3; S.day.moon = true; }
   if (it.kind === 'noads') S.noAds = true;
+  if (it.kind === 'pass') mtState().pass = true;
   S.bought[it.id] = (S.bought[it.id] || 0) + 1;
   S.spend.yen += it.yen;
+  TD.send('Purchase.completed', { 'Purchase.product': it.id, 'Purchase.times': S.bought[it.id] });
   return true;
 }
 // a purchase that finished outside the purchase sheet (Ask to Buy approval, an interrupted purchase)
@@ -742,12 +886,17 @@ const MATSURI = [null,
   { name: tl('年越し', 'Year\'s End'), ch: '鐘', col: '#cfe0ff', fx: ['fall', '#ffffff', 'dot'], line: tl('除夜の鐘が百八つ。電線の雪を払って、新しい年へ。', 'The temple bell rings 108 times. Brush the snow off the power lines and step into the new year.') },
 ];
 const MT_GOALS = [
-  { k: 'runs', name: tl('出撃を20回', 'Go on 20 sorties'), need: 20, rew: { fu: 1 } },
+  { k: 'runs', name: tl('出撃を20回', 'Go on 20 sorties'), need: 20, rew: { reishi: 2000 } },
   { k: 'kills', name: tl('ノイズを6,000体祓う', 'Banish 6,000 Noise'), need: 6000, rew: { reishi: 3000 } },
-  { k: 'bosses', name: tl('大禍を10体祓う', 'Banish 10 Calamities'), need: 10, rew: { fu: 1 } },
+  { k: 'bosses', name: tl('大禍を10体祓う', 'Banish 10 Calamities'), need: 10, rew: { reishi: 3000 } },
   { k: 'pets', name: tl('電獣をなでる（7日）', 'Pet a denju (7 days)'), need: 7, rew: { reishi: 2000 } },
 ];
-const MT_BONUS = { fu: 2 };
+const MT_BONUS = { fu: 1 };
+/* 祭りパス (paid, one month): talismans now, more talismans on each of the month's goals and on its seal, and the
+   seal turns gold. Rewards follow play only (the same four goals for everyone), never particular beasts or summons.
+   Its talismans count as purchased (S.fuP), like every talisman bought. It ends with the month. */
+const mtPass = () => !!mtState().pass;
+const mtDaysLeft = () => Math.max(0, Math.ceil((mtNow().end - Date.now()) / 86400e3));
 function mtNow(ms = Date.now()) {
   const key = monthKeyOf(ms), y = +key.slice(0, 4), m = +key.slice(5, 7);
   return { key, m, ...MATSURI[m], end: new Date(y, m, 1, 4).getTime() }; // 4:00 on the 1st of the next month
@@ -755,7 +904,31 @@ function mtNow(ms = Date.now()) {
 function mtState() { const k = monthKeyOf(); if (!S.mt || S.mt.key !== k) S.mt = { key: k, c: {}, got: [], seal: false }; return S.mt; }
 function mtAdd(k, n = 1) { const M = mtState(); M.c[k] = (M.c[k] || 0) + n; }
 const mtDone = (g) => (mtState().c[g.k] || 0) >= g.need;
-const mtClaimable = () => { const M = mtState(); return MT_GOALS.filter((g, i) => !M.got.includes(i) && mtDone(g)).length + (M.got.length === MT_GOALS.length && !M.seal ? 1 : 0); };
+const mtPgot = (k) => (mtState().pgot || []).includes(k);
+// a goal can be claimed while its free reward, or (with the pass) its pass reward, is still waiting
+const mtClaimable = () => { const M = mtState(), all = M.got.length === MT_GOALS.length;
+  return MT_GOALS.filter((g, i) => mtDone(g) && (!M.got.includes(i) || (M.pass && !mtPgot(i)))).length + (all && (!M.seal || (M.pass && !mtPgot('seal'))) ? 1 : 0); };
+
+/* ---------- はじめの七日: a new player's first week ----------
+   Seven steps, one more opening each day from the first day played (4:00 to 4:00). Each teaches a part of the game
+   and pays out; the seventh is simply coming back on day 7. Mostly 霊子: talismans only on days 4 and 7 (not handed out easily). The track
+   closes once every step is taken, or 14 days after it began. Free rewards, nothing tied to purchases or beasts. */
+const BG_STEPS = [
+  { id: 'g1', day: 0, name: tl('一ノ区を浄化する', 'Purify Ward 1'), ok: () => S.cleared >= 1, rew: { reishi: 500 } },
+  { id: 'g2', day: 1, name: tl('言霊召喚で電獣と契約する', 'Contract a denju by Kanji Summon'), ok: () => featStat('words') >= 1, rew: { reishi: 1000 } },
+  { id: 'g3', day: 2, name: tl('電獣を Lv5 まで育てる', 'Raise a denju to Lv 5'), ok: () => S.beasts.some((b) => b.lv >= 5), rew: { reishi: 1500 } },
+  { id: 'g4', day: 3, name: tl('三ノ区まで浄化する', 'Purify up to Ward 3'), ok: () => S.cleared >= 3, rew: { fu: 1 } },
+  { id: 'g5', day: 4, name: tl('戦いで技を覚醒させる', 'Awaken a skill in battle'), ok: () => featStat('awake') >= 1, rew: { reishi: 3000 } },
+  { id: 'g6', day: 5, name: tl('封印解放を5回つかう', 'Use Seal Release 5 times'), ok: () => featStat('ult') >= 5, rew: { reishi: 3000 } },
+  { id: 'g7', day: 6, name: tl('7日目に会いにくる', 'Come back on day 7'), ok: () => true, rew: { fu: 2 } },
+];
+const BG_DAYS = 14;
+function bgState() { if (!S.bg) S.bg = { start: dayKeyOf(), got: [] }; return S.bg; }
+const dayGap = (a, b) => Math.round((Date.parse(b + 'T12:00:00') - Date.parse(a + 'T12:00:00')) / 86400e3);
+const bgDay = () => Math.max(0, dayGap(bgState().start, dayKeyOf()));
+const bgOpen = () => bgState().got.length < BG_STEPS.length && bgDay() < BG_DAYS;
+const bgReady = (s) => bgDay() >= s.day && s.ok();
+const bgClaimable = () => (bgOpen() ? BG_STEPS.filter((s) => !bgState().got.includes(s.id) && bgReady(s)).length : 0);
 
 /* ---------- 封印の加護: a gentler ward for a player who keeps losing ----------
    The first ward is gentler until it is purified (a new player's first battles), and a ward that has beaten you
@@ -766,7 +939,7 @@ function kagoOf(st, dp, o = {}) {
   if (o.endless || o.chal || o.demo || dp > 0) return null;
   const n = Math.min(KAGO_MAX, (S.fails && S.fails[st.id]) || 0), first = st === STAGES[0] && S.cleared === 0;
   if (!n && !first) return null;
-  return { n, first, hp: (1 - 0.08 * n) * (first ? 0.8 : 1), dmg: (1 - 0.08 * n) * (first ? 0.75 : 1) };
+  return { n, first, hp: (1 - 0.08 * n) * (first ? 0.6 : 1), dmg: (1 - 0.08 * n) * (first ? 0.6 : 1) };
 }
 
 /* ---------- 百鬼夜行: the weekly endless night ----------
@@ -779,11 +952,12 @@ const HK_OPEN = 3;
 const weekKeyOf = (ms = Date.now()) => { const d = new Date(ms + 5 * 3600e3); d.setUTCHours(12, 0, 0, 0); d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7)); return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`; };
 const weekRange = (wk) => { const d = new Date(wk + 'T12:00:00'), e = new Date(d); e.setDate(d.getDate() + 6); if (EN) { const f = (x) => x.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); return f(d) + ' – ' + f(e); } return `${d.getMonth() + 1}/${d.getDate()}〜${e.getMonth() + 1}/${e.getDate()}`; };
 function hkWeek(wk = weekKeyOf()) {
-  const r = rngFrom('hyakki/v1/' + wk), si = Math.floor(r() * STAGES.length);
-  const order = STAGES.map((s, i) => i).sort(() => r() - 0.5); // the 大禍 that follow, in this week's order
+  // weeks before 1.2.0's Chapter 3 keep the draw they had over the first 10 wards (same ward, same leaderboard)
+  const n = wk < '2026-10-19' ? 10 : STAGES.length, r = rngFrom('hyakki/v1/' + wk), si = Math.floor(r() * n);
+  const order = STAGES.slice(0, n).map((s, i) => i).sort(() => r() - 0.5).concat(STAGES.map((s, i) => i).slice(n)); // the 大禍 that follow, in this week's order
   return { wk, si, mods: [HK_HARD[Math.floor(r() * HK_HARD.length)], HK_BOON[Math.floor(r() * HK_BOON.length)]], order: [si, ...order.filter((i) => i !== si)] };
 }
-const HK_MILES = [[180, { reishi: 1500 }], [300, { fu: 1 }], [420, { fu: 2 }], [600, { fu: 3 }]];
+const HK_MILES = [[180, { reishi: 1500 }], [300, { reishi: 3000 }], [420, { reishi: 5000 }], [600, { fu: 1 }]];
 function hkState() { const wk = weekKeyOf(); if (!S.hk || S.hk.wk !== wk) S.hk = { wk, best: 0, kills: 0, got: [], all: (S.hk && S.hk.all) || 0, runs: 0 }; return S.hk; }
 const hkOpen = () => S.cleared >= HK_OPEN;
 /* Game Center (iOS): 百鬼夜行 ranks everyone by the time survived, on a weekly board that resets with the
@@ -839,12 +1013,12 @@ const fmtMS = (sec) => tl(`${Math.floor(sec / 60)}分${String(Math.floor(sec % 6
 
 /* ---------- 異変に挑む: two challenges per cleared ward (Megabonk-style), 召喚符×2 the first time each ---------- */
 const BINDS = {
-  solo: { id: 'solo', name: tl('一騎当千', 'Lone Warrior'), desc: tl('先頭の1体だけで出撃', 'Only your lead denju goes out'), solo: true, fx: {} },
+  solo: { id: 'solo', name: tl('一芸', 'One Trick'), desc: tl('写し技を覚えない（技はひとつだけ）', 'No copied skill: one technique only'), solo: true, fx: {} },
   noreso: { id: 'noreso', name: tl('共鳴封じ', 'No Resonance'), desc: tl('電柱のそばでも共鳴しない', 'Power poles give no resonance'), fx: { reso: 0 } },
   noheal: { id: 'noheal', name: tl('癒し断ち', 'No Healing'), desc: tl('鬼が回復を落とさない', 'Oni drop no healing'), fx: { heal: 0 } },
 };
-const CHAL = { s1: ['swarm', 'solo'], s2: ['oni', 'noreso'], s3: ['kama', 'noheal'], s4: ['lantern', 'solo'], s5: ['musha', 'noreso'], s6: ['maga', 'noheal'], s7: ['swarm', 'solo'], s8: ['kama', 'noheal'], s9: ['oni', 'noreso'], s10: ['musha', 'solo'] };
-const CHAL_REW = { fu: 2 };
+const CHAL = { s1: ['swarm', 'solo'], s2: ['oni', 'noreso'], s3: ['kama', 'noheal'], s4: ['lantern', 'solo'], s5: ['musha', 'noreso'], s6: ['maga', 'noheal'], s7: ['swarm', 'solo'], s8: ['kama', 'noheal'], s9: ['oni', 'noreso'], s10: ['musha', 'solo'], s11: ['swarm', 'noreso'], s12: ['kama', 'noheal'], s13: ['oni', 'solo'], s14: ['lantern', 'noreso'], s15: ['maga', 'noheal'] };
+const CHAL_REW = { reishi: 2000 };
 const chalDef = (k) => BINDS[k] || HK_HARD.find((m) => m.id === k);
 const chalDone = (stId, k) => !!(S.chal && S.chal[stId] && S.chal[stId].includes(k));
 
@@ -852,33 +1026,33 @@ const chalDone = (stId, k) => !!(S.chal && S.chal[stId] && S.chal[stId].includes
    never the number of paid summons ---------- */
 const FEATS = [
   { id: 'k1', name: tl('ノイズを1,000体祓う', 'Banish 1,000 Noise'), stat: 'kills', need: 1000, rew: { reishi: 1000 } },
-  { id: 'k2', name: tl('ノイズを1万体祓う', 'Banish 10,000 Noise'), stat: 'kills', need: 10000, rew: { fu: 2 } },
-  { id: 'k3', name: tl('ノイズを5万体祓う', 'Banish 50,000 Noise'), stat: 'kills', need: 50000, rew: { fu: 3 } },
-  { id: 'k4', name: tl('ノイズを20万体祓う', 'Banish 200,000 Noise'), stat: 'kills', need: 200000, rew: { fu: 5 } },
+  { id: 'k2', name: tl('ノイズを1万体祓う', 'Banish 10,000 Noise'), stat: 'kills', need: 10000, rew: { reishi: 3000 } },
+  { id: 'k3', name: tl('ノイズを5万体祓う', 'Banish 50,000 Noise'), stat: 'kills', need: 50000, rew: { fu: 1 } },
+  { id: 'k4', name: tl('ノイズを20万体祓う', 'Banish 200,000 Noise'), stat: 'kills', need: 200000, rew: { fu: 2 } },
   { id: 'b1', name: tl('大禍を5体祓う', 'Banish 5 Calamities'), stat: 'bosses', need: 5, rew: { reishi: 1500 } },
-  { id: 'b2', name: tl('大禍を30体祓う', 'Banish 30 Calamities'), stat: 'bosses', need: 30, rew: { fu: 2 } },
-  { id: 'b3', name: tl('大禍を100体祓う', 'Banish 100 Calamities'), stat: 'bosses', need: 100, rew: { fu: 4 } },
-  { id: 'c1', name: tl('三ノ区まで浄化する', 'Purify up to Ward 3'), stat: 'cleared', need: 3, rew: { fu: 2 } },
-  { id: 'c2', name: tl('第一章を浄化する', 'Purify Chapter 1'), stat: 'cleared', need: 6, rew: { fu: 3 } },
-  { id: 'c3', name: tl('第二章を浄化する', 'Purify Chapter 2'), stat: 'cleared', need: 10, rew: { fu: 5 } },
-  { id: 'd1', name: tl('どこかの区を深度5で浄化', 'Purify any ward at Depth 5'), stat: 'depth', need: 5, rew: { fu: 2 } },
-  { id: 'd2', name: tl('どこかの区を深度10で浄化', 'Purify any ward at Depth 10'), stat: 'depth', need: 10, rew: { fu: 3 } },
-  { id: 'd3', name: tl('どこかの区を深度20で浄化', 'Purify any ward at Depth 20'), stat: 'depth', need: 20, rew: { fu: 5 } },
-  { id: 'h1', name: tl('百鬼夜行で5分生きのびる', 'Survive 5 minutes in the Night Parade'), stat: 'hk', need: 300, rew: { fu: 1 }, time: true },
-  { id: 'h2', name: tl('百鬼夜行で7分生きのびる', 'Survive 7 minutes in the Night Parade'), stat: 'hk', need: 420, rew: { fu: 2 }, time: true },
-  { id: 'h3', name: tl('百鬼夜行で10分生きのびる', 'Survive 10 minutes in the Night Parade'), stat: 'hk', need: 600, rew: { fu: 4 }, time: true },
-  { id: 'a1', name: tl('異変を3つ乗りこえる', 'Overcome 3 Anomalies'), stat: 'chal', need: 3, rew: { fu: 2 } },
-  { id: 'a2', name: tl('異変を10乗りこえる', 'Overcome 10 Anomalies'), stat: 'chal', need: 10, rew: { fu: 4 } },
+  { id: 'b2', name: tl('大禍を30体祓う', 'Banish 30 Calamities'), stat: 'bosses', need: 30, rew: { reishi: 4000 } },
+  { id: 'b3', name: tl('大禍を100体祓う', 'Banish 100 Calamities'), stat: 'bosses', need: 100, rew: { fu: 2 } },
+  { id: 'c1', name: tl('三ノ区まで浄化する', 'Purify up to Ward 3'), stat: 'cleared', need: 3, rew: { reishi: 3000 } },
+  { id: 'c2', name: tl('第一章を浄化する', 'Purify Chapter 1'), stat: 'cleared', need: 6, rew: { fu: 1 } },
+  { id: 'c3', name: tl('第二章を浄化する', 'Purify Chapter 2'), stat: 'cleared', need: 10, rew: { fu: 2 } },
+  { id: 'd1', name: tl('どこかの区を深度5で浄化', 'Purify any ward at Depth 5'), stat: 'depth', need: 5, rew: { reishi: 3000 } },
+  { id: 'd2', name: tl('どこかの区を深度10で浄化', 'Purify any ward at Depth 10'), stat: 'depth', need: 10, rew: { fu: 1 } },
+  { id: 'd3', name: tl('どこかの区を深度20で浄化', 'Purify any ward at Depth 20'), stat: 'depth', need: 20, rew: { fu: 2 } },
+  { id: 'h1', name: tl('百鬼夜行で5分生きのびる', 'Survive 5 minutes in the Night Parade'), stat: 'hk', need: 300, rew: { reishi: 2000 }, time: true },
+  { id: 'h2', name: tl('百鬼夜行で7分生きのびる', 'Survive 7 minutes in the Night Parade'), stat: 'hk', need: 420, rew: { reishi: 4000 }, time: true },
+  { id: 'h3', name: tl('百鬼夜行で10分生きのびる', 'Survive 10 minutes in the Night Parade'), stat: 'hk', need: 600, rew: { fu: 1 }, time: true },
+  { id: 'a1', name: tl('異変を3つ乗りこえる', 'Overcome 3 Anomalies'), stat: 'chal', need: 3, rew: { reishi: 3000 } },
+  { id: 'a2', name: tl('異変を10乗りこえる', 'Overcome 10 Anomalies'), stat: 'chal', need: 10, rew: { fu: 1 } },
   { id: 'w1', name: tl('言霊召喚で10体と契約', 'Contract 10 denju by Kanji Summon'), stat: 'words', need: 10, rew: { reishi: 1000 } },
-  { id: 'w2', name: tl('言霊召喚で50体と契約', 'Contract 50 denju by Kanji Summon'), stat: 'words', need: 50, rew: { fu: 2 } },
+  { id: 'w2', name: tl('言霊召喚で50体と契約', 'Contract 50 denju by Kanji Summon'), stat: 'words', need: 50, rew: { reishi: 5000 } },
   { id: 'p1', name: tl('電獣を昇格させる', 'Ascend a denju'), stat: 'promo', need: 1, rew: { reishi: 2000 } },
-  { id: 'n1', name: tl('なかよし♥5の電獣が3体', 'Have 3 denju at Bond ♥5'), stat: 'bond', need: 3, rew: { fu: 2 } },
+  { id: 'n1', name: tl('なかよし♥5の電獣が3体', 'Have 3 denju at Bond ♥5'), stat: 'bond', need: 3, rew: { reishi: 5000 } },
   { id: 'u1', name: tl('封印解放を30回', 'Use Seal Release 30 times'), stat: 'ult', need: 30, rew: { reishi: 2000 } },
-  { id: 'x1', name: tl('覚醒を20回', 'Awaken 20 times'), stat: 'awake', need: 20, rew: { fu: 1 } },
-  { id: 'f1', name: tl('合体技を3種類見つける', 'Discover 3 Fusions'), stat: 'fused', need: 3, rew: { fu: 2 } },
-  { id: 'f2', name: tl('合体技を10種類すべて見つける', 'Discover all 10 Fusions'), stat: 'fused', need: 10, rew: { fu: 5 } },
-  { id: 'y1', name: tl('妖怪録を15種うめる', 'Fill 15 entries of the Yokai Log'), stat: 'yk', need: 15, rew: { fu: 2 } },
-  { id: 'y2', name: tl('妖怪録を30種すべてうめる', 'Fill all 30 entries of the Yokai Log'), stat: 'yk', need: 30, rew: { fu: 5 } },
+  { id: 'x1', name: tl('覚醒を20回', 'Awaken 20 times'), stat: 'awake', need: 20, rew: { reishi: 3000 } },
+  { id: 'f1', name: tl('合体技を3種類見つける', 'Discover 3 Fusions'), stat: 'fused', need: 3, rew: { reishi: 3000 } },
+  { id: 'f2', name: tl('合体技を10種類すべて見つける', 'Discover all 10 Fusions'), stat: 'fused', need: 10, rew: { fu: 2 } },
+  { id: 'y1', name: tl('妖怪録を15種うめる', 'Fill 15 entries of the Yokai Log'), stat: 'yk', need: 15, rew: { reishi: 3000 } },
+  { id: 'y2', name: tl('妖怪録を30種うめる', 'Fill 30 entries of the Yokai Log'), stat: 'yk', need: 30, rew: { fu: 2 } },
 ];
 function featStat(k) {
   const st = S.stat || {};
@@ -933,6 +1107,12 @@ const YOKAI = [
   { k: '牛鬼', n: tl('牛鬼', 'Ushi-oni'), r: tl('うしおに', 'ox demon'), t: 'brute', where: 's9', lore: tl('牛の頭と、鬼や蜘蛛の体をもつと伝わる、西日本の海辺の妖怪。濡れ女と組んで人を襲う話もある。', 'A seaside yokai of western Japan, said to have the head of an ox and the body of an oni or a spider. Some tales pair it with the nure-onna.') },
   { k: '八雷', n: tl('八雷', 'Yakusa no Ikazuchi'), r: tl('やくさのいかづち', 'eight thunders'), t: 'brute', where: 's10', lore: tl('黄泉の国でイザナミの体に生じた八柱の雷の神。黄泉の軍勢を率いてイザナギを追ったという。', 'Eight thunder gods born from Izanami\'s body in the land of the dead. They led the armies of Yomi in pursuit of Izanagi.') },
   { k: '提灯お化け', n: tl('提灯お化け', 'Chochin-obake'), r: tl('ちょうちんおばけ', 'lantern ghost'), t: 'caster', where: 's1', lore: tl('古い提灯が化けたつくも神。破れ目が口になり、長い舌を出して笑う。離れたところから火の玉を撃つ。', 'An old paper lantern turned tsukumogami. Its torn slit becomes a mouth that laughs with a long tongue. It shoots fireballs from afar.') },
+  { k: '唐傘お化け', n: tl('唐傘お化け', 'Karakasa'), r: tl('からかさおばけ', 'umbrella ghost'), t: 'hopper', where: 's2', lore: tl('百年使われた傘が化けたつくも神。一本足で跳ね、長い舌を出す。高架下の雨の日に、ぴょんと間をつめてくる。', 'A tsukumogami born from an umbrella used for a hundred years. It hops on one leg and sticks out a long tongue. On rainy days under the tracks, it closes in with a single bound.') },
+  { k: '一反木綿', n: tl('一反木綿', 'Ittan-momen'), r: tl('いったんもめん', 'a roll of cotton'), t: 'charger', where: 's5', lore: tl('鹿児島の肝付に伝わる、一反（約10m）の白い布の妖怪。夜空をひらひら飛び、人の首に巻きつくという。狙いを定めると、まっすぐ突っこんでくる。', 'A yokai of Kimotsuki in Kagoshima: a roll of white cotton about ten meters long. It flutters through the night sky and wraps around people\'s necks. Once it takes aim, it rushes straight in.') },
+  { k: '木霊', n: tl('木霊', 'Kodama'), r: tl('こだま', 'tree spirit'), t: 'splitter', where: 's4', lore: tl('古い木に宿る精霊。山で声が返ってくるのは木霊が答えるからだという。倒すと、小さなふたつに分かれる。', 'A spirit that lives in old trees; echoes in the mountains are said to be the kodama answering. Banish one and it splits into two smaller ones.') },
+  { k: '火車', n: tl('火車', 'Kasha'), r: tl('かしゃ', 'burning cart'), t: 'bomber', where: 's3', lore: tl('燃える車で、悪人の亡骸を奪いに来るという妖怪。ここでは燃える車輪となって転がり、そばで爆ぜる。', 'A yokai said to come in a burning cart to steal the bodies of the wicked. Here it rolls in as a burning wheel and bursts beside you.') },
+  { k: '雪女', n: tl('雪女', 'Yuki-onna'), r: tl('ゆきおんな', 'snow woman'), t: 'freezer', where: 's6', lore: tl('雪の夜に現れる白い着物の女。息を吹きかけると人を凍らせるという。そばにいると、冷気で足が重くなる。', 'A woman in white who appears on snowy nights; her breath is said to freeze people. Near her, the cold makes your feet heavy.') },
+  { k: '塗壁', n: tl('塗壁', 'Nurikabe'), r: tl('ぬりかべ', 'plastered wall'), t: 'wall', where: 's7', lore: tl('夜道で急に前に壁が現れて進めなくなる、という福岡の妖怪。棒で下のほうを払うと消えるという。会心の一撃でないと、なかなか崩れない。', 'A yokai of Fukuoka: on a night road, a wall suddenly blocks the way. Sweep low with a stick and it is said to vanish. Only a critical blow really breaks it.') },
   { k: '鎧武者', n: tl('鎧武者', 'Yoroi Musha'), r: tl('よろいむしゃ', 'armored warrior'), t: 'elite', where: 's1', lore: tl('古い鎧に宿ったノイズの精鋭。金の三日月の前立てと、背中の旗が目印。倒すと霊箱を落とす。', 'An elite of the Noise dwelling in an old suit of armor. Look for the gold crescent crest and the banner on its back. It drops a spirit chest when banished.') },
   { k: '停電鬼', n: tl('停電鬼', 'Blackout Oni'), r: tl('テイデンキ', 'teidenki'), boss: 's1', lore: tl('電線の髪をもつ巨大な鬼の顔。街の灯りを食べ、あたりを停電させる。', 'A giant oni face with hair of power lines. It eats the city\'s lights and plunges the streets into a blackout.') },
   { k: '逆雷', n: tl('逆雷', 'Reverse Thunder'), r: tl('サカイカズチ', 'sakaikazuchi'), boss: 's2', lore: tl('地面から空へ走る、逆さの雷。一つ目で狙いを定め、雷を落とす場所を予告する。', 'Lightning that runs upside down, from the ground into the sky. It takes aim with its single eye and marks where the bolt will fall.') },
@@ -944,6 +1124,11 @@ const YOKAI = [
   { k: '大天狗', n: tl('大天狗', 'Great Tengu'), r: tl('ダイテング', 'daitengu'), boss: 's8', lore: tl('鞍馬山の大天狗は、牛若丸に剣を教えたと伝えられる。電波塔の天辺から羽団扇で風を起こす。', 'The Great Tengu of Mount Kurama is said to have taught swordsmanship to the young Ushiwakamaru. From the top of the radio tower, it raises winds with its feather fan.') },
   { k: '海坊主', n: tl('海坊主', 'Umibozu'), r: tl('ウミボウズ', 'sea monk'), boss: 's9', lore: tl('海に現れる、黒く大きな坊主頭の妖怪。舟を沈めるという。水に沈んだ街で、波を起こす。', 'A huge black yokai with a shaven head that rises from the sea and sinks ships. In the sunken city, it stirs up the waves.') },
   { k: '大禍津日神', n: tl('大禍津日神', 'Omagatsuhi'), r: tl('オオマガツヒノカミ', 'god of calamity'), boss: 's10', lore: tl('古事記で、黄泉から戻ったイザナギが禊をしたとき、黄泉の穢れから生まれた災いの神。すべての大禍の源。', 'In the Kojiki, the god of disaster born from the impurity of Yomi when Izanagi purified himself after returning from the land of the dead. The source of every Calamity.') },
+  { k: '真・提灯大入道', n: tl('真・提灯大入道', 'True Lantern Giant'), r: tl('シン・チョウチンオオニュウドウ', 'true chochin o-nyudo'), boss: 's11', lore: tl('裏の稲荷坂で、白い提灯を集めて立ち上がった大入道の真の姿。坂の上から、坂の下まで届く背丈。', 'The true form of the giant monk, risen from white lanterns on the reversed slope. Tall enough to reach from the top of the slope to the bottom.') },
+  { k: '真・送電大蛇', n: tl('真・送電大蛇', 'True Power Line Orochi'), r: tl('シン・ソウデンオロチ', 'true soden orochi'), boss: 's12', lore: tl('吹雪の中で凍りついた送電線が、ふたたび動き出したもの。這った跡に、雪と雷がいっしょに落ちる。', 'Power lines frozen in the blizzard, moving again. Snow and lightning fall together wherever it has crawled.') },
+  { k: '真・大百足', n: tl('真・大百足', 'True Great Centipede'), r: tl('シン・オオムカデ', 'true omukade'), boss: 's13', lore: tl('非常灯の駅にひそむ大百足の真の姿。赤い光のなかで、終電よりも速く地の下を走る。', 'The true form of the great centipede lurking in the emergency-lit station. In the red light, it runs beneath the ground faster than the last train.') },
+  { k: '真・大天狗', n: tl('真・大天狗', 'True Great Tengu'), r: tl('シン・ダイテング', 'true daitengu'), boss: 's14', lore: tl('緑の砂嵐を羽団扇でまとめる大天狗の真の姿。塔の天辺から、街じゅうの電波を聞いている。', 'The true form of the Great Tengu, gathering the green static with its feather fan. From the top of the tower it listens to every signal in the city.') },
+  { k: '真・大禍津日神', n: tl('真・大禍津日神', 'True Omagatsuhi'), r: tl('シン・オオマガツヒノカミ', 'true omagatsuhi'), boss: 's15', lore: tl('白き常世で目を開けた、すべての禍の源の真の姿。これまでのすべての大禍の力を借りる。', 'The true form of the source of all calamity, awake in white Tokoyo. It borrows the power of every Calamity before it.') },
 ];
 function ykSeen(n) { return (S.yk && S.yk[n]) || 0; }
 // the log is keyed by the Japanese name, so it reads the same in either language

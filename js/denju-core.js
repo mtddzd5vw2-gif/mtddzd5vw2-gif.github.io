@@ -59,7 +59,7 @@ const AD_SAMPLE = {
   ios: { rewarded: 'ca-app-pub-3940256099942544/1712485313', inter: 'ca-app-pub-3940256099942544/4411468910' },
   android: { rewarded: 'ca-app-pub-3940256099942544/5224354917', inter: 'ca-app-pub-3940256099942544/1033173712' },
 };
-const APP_VERSION = '1.3.0';
+const APP_VERSION = '1.3.1';
 // the App Store page (share texts carry it). Region-free since 1.1 (English, more stores): it opens each viewer's own store
 const APP_STORE_URL = 'https://apps.apple.com/app/id6816935558';
 const NB = {
@@ -417,7 +417,7 @@ const TRAITS = {
   ooki:     { k: '大', name: tl('大技', 'Big Moves'), desc: tl('技の範囲 +15%', 'Skill area +15%') },
   kariudo:  { k: '狩', name: tl('狩人', 'Hunter'), desc: tl('精鋭と大禍への威力 +20%', 'Damage to elites and Calamities +20%') },
   fukutsu:  { k: '屈', name: tl('不屈', 'Unyielding'), desc: tl('一度だけ、倒れるほどの攻撃をHP20%で耐える', 'Once, survive a fatal blow at 20% HP') },
-  saisei:   { k: '癒', name: tl('再生', 'Regenerate'), desc: tl('毎秒 最大HPの0.4%回復', 'Heal 0.4% of max HP each second') },
+  saisei:   { k: '癒', name: tl('再生', 'Regenerate'), desc: tl('毎秒 最大HPの0.25%回復', 'Heal 0.25% of max HP each second') },
   raishin:  { k: '雷', name: tl('雷心', 'Storm Heart'), desc: tl('封印解放のゲージが20%たまりやすい', 'Seal Release charges 20% faster') },
   shugo:    { k: '守', name: tl('守護霊', 'Guardian'), desc: tl('戦いのはじめの20秒、受けるダメージ半分', 'Damage taken halved for the first 20 seconds') },
 };
@@ -526,7 +526,11 @@ function spendFu(n) { if (fuTotal() < n) return false; const p = Math.min(S.fuP,
 /* ---------- talisman (霊符) summon ---------- */
 const PITY_MAX = 100;           // the 100th pull without 神 is 神
 const MULTI_N = 10;             // the 10th pull of a 10-pull is 稀 or better
-const GUAR_W = [['SR', 97], ['UR', 3]];
+/* the summon's odds (1.3.1, the owner 10/17: 神 3% → 1%). RAR_W in 10_core stays as it is: it decides which rank each
+   talisman code and each word holds, so changing it would change every denju already met. A summon rolls a rank here and
+   then finds a fresh code of that rank. */
+const ROLL_W = [['N', 57], ['R', 30], ['SR', 12], ['UR', 1]];
+const GUAR_W = [['SR', 99], ['UR', 1]];
 const CODE_KANA = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワ';
 const newCode = () => CODE_KANA[Math.floor(Math.random() * CODE_KANA.length)] + '-' + String(Math.floor(Math.random() * 10000)).padStart(4, '0');
 // the code as English players read it (ネ-4444 → NE-4444); the code itself, which calls the beast, never changes
@@ -534,7 +538,7 @@ const KANA_ROMA = { ア: 'A', イ: 'I', ウ: 'U', エ: 'E', オ: 'O', カ: 'KA',
 const codeShow = (n) => (EN ? String(n).replace(/^([ア-ワ])-/, (m, k) => (KANA_ROMA[k] || k) + '-') : String(n));
 function rollRarity(guarantee) {
   if (S.pity >= PITY_MAX - 1) return 'UR';
-  return weighted(Math.random, guarantee ? GUAR_W : RAR_W);
+  return weighted(Math.random, guarantee ? GUAR_W : ROLL_W);
 }
 // find a fresh seal code whose beast carries the rolled rarity
 function codeFor(rar, taken) {
